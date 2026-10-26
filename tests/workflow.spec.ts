@@ -138,6 +138,15 @@ test("role, score tap, playback, views, fullscreen navigation and corrections", 
   await expect
     .poll(() => page.evaluate(() => (window as any).kuroiAudit.state.follow))
     .toBe(false);
+  const manualPage = await page.evaluate(
+    () => (window as any).kuroiAudit.state.scorePage,
+  );
+  await page.evaluate(() =>
+    (window as any).kuroiAudit.audio.dispatchEvent(new Event("loadedmetadata")),
+  );
+  expect(
+    await page.evaluate(() => (window as any).kuroiAudit.state.scorePage),
+  ).toBe(manualPage);
   await page.getByRole("button", { name: "연습 도구", exact: true }).click();
   await page.getByRole("button", { name: /현재 지점 보정/ }).click();
   await expect

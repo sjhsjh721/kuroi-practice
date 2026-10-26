@@ -1134,7 +1134,7 @@ function bind() {
       audio.currentTime = Math.min(pendingSeek, Math.max(0, duration - 0.01));
       pendingSeek = null;
     }
-    applyCue();
+    if (follow) applyCue();
     transport();
   });
   audio.addEventListener("error", () => {
