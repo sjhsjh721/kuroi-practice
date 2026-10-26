@@ -1,15 +1,18 @@
 /* Complete media files are cached by the download manager, never partial 206s. */
-const SHELL_PREFIX = "kuroi-shell-";
+const BASE = new URL("./", self.location.href);
+const at = (path) => new URL(path, BASE).pathname;
+const scopeKey = BASE.pathname.replace(/\W/g, "_");
+const SHELL_PREFIX = "kuroi-shell-" + scopeKey + "-";
 self.addEventListener("install", (event) =>
   event.waitUntil(
     (async () => {
-      const r = await fetch("/shell-manifest.json", { cache: "no-store" });
+      const r = await fetch(at("shell-manifest.json"), { cache: "no-store" });
       if (!r.ok) throw Error("shell manifest");
       const manifest = await r.json();
       const cache = await caches.open(SHELL_PREFIX + manifest.version);
       await cache.addAll(manifest.files);
       await cache.put(
-        "/shell-manifest.json",
+        at("shell-manifest.json"),
         new Response(JSON.stringify(manifest), {
           headers: { "Content-Type": "application/json" },
         }),
@@ -65,13 +68,15 @@ self.addEventListener("fetch", (event) => {
     return;
   event.respondWith(
     (async () => {
-      if (url.pathname.startsWith("/library/")) {
+      if (url.pathname.startsWith(at("library/"))) {
         if (event.request.headers.get("X-Kuroi-Download") === "1")
           return fetch(event.request);
-        const manifest = await caches.match("/library-manifest.json");
+        const manifest = await caches.match(at("library-manifest.json"));
         if (manifest) {
           const m = await manifest.json();
-          const cache = await caches.open("kuroi-library-" + m.version);
+          const cache = await caches.open(
+            "kuroi-library-" + scopeKey + "-" + m.version,
+          );
           const hit = await cache.match(url.pathname);
           if (hit) return rangeResponse(event.request, hit);
         }
@@ -82,7 +87,7 @@ self.addEventListener("fetch", (event) => {
         try {
           return await fetch(event.request);
         } catch {
-          return (await caches.match("/index.html")) || Response.error();
+          return (await caches.match(at("index.html"))) || Response.error();
         }
       }
       return shell || fetch(event.request);

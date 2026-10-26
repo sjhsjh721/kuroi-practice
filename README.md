@@ -35,7 +35,9 @@ pnpm preview
 pnpm test
 ```
 
-일반 HTTPS 정적 호스팅에 `dist/`를 올립니다. Service Worker는 HTTPS 또는 localhost에서만 동작합니다. `.openai/hosting.json`은 이 작업에서 생성한 Sites의 고정 식별자와 정적 배포 경로입니다. Cloudflare Pages에도 같은 `dist/`를 올릴 수 있습니다. 모든 라이브러리 파일은 개별 25MiB 미만입니다. 별도 서버·DB·유료 Apple 개발자 계정은 필요하지 않습니다.
+일반 HTTPS 정적 호스팅에 `dist/`를 올립니다. Service Worker는 HTTPS 또는 localhost에서만 동작합니다. 경로는 루트와 GitHub Pages의 하위 경로를 모두 지원합니다. 별도 서버·DB·유료 Apple 개발자 계정은 필요하지 않습니다.
+
+공개 배포는 GitHub Pages를 사용합니다. 최초 Sites 전송에서는 소스 Git과 256MiB 배포 묶음 한도에 걸려 전체 자료를 배포하지 못했습니다. `.openai/hosting.json`의 기존 Sites 식별자는 복구 기록으로 보존하며 Sites에 성공한 배포는 없습니다. 원본 자료와 음질을 유지하기 위해 GitHub Release에 검증된 `dist/` 묶음과 SHA-256을 올리고 `.github/workflows/pages.yml`에서 묶음 검증 후 Pages로 배포합니다. 무료 공개 Pages의 사이트 1GB 한도 안에 들며, 월 100GB 소프트 트래픽 한도는 별도로 적용됩니다. Cloudflare Pages 계정이 있으면 같은 `dist/`를 직접 올릴 수도 있습니다.
 
 `scripts/prepare_library.py`는 상위 Native 프로젝트의 정본을 복사하고 SHA-256 목록을 만듭니다. 약 569MB의 `public/library/`는 소스 Git 전송 제한 때문에 Git에 넣지 않고, 해시 목록을 추적하며 배포 묶음에 원본 그대로 포함합니다. 독립 체크아웃에서는 검증된 배포 묶음의 `dist/library/`를 `public/library/`로 복사한 뒤 빌드합니다. 누락·변경 파일이 있으면 빌드를 중단합니다. `pnpm-lock.yaml`로 의존성을 고정합니다.
 

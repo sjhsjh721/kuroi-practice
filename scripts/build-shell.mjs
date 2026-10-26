@@ -11,7 +11,7 @@ async function walk(dir) {
   return out;
 }
 const paths = await walk("dist");
-const files = paths.map((p) => "/" + p.slice(5));
+const files = paths.map((p) => p.slice(5));
 const h = createHash("sha256");
 for (const p of paths) h.update(await readFile(p));
 await writeFile(

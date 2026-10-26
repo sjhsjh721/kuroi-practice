@@ -1,0 +1,37 @@
+name: Publish verified PWA
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: Verified bundle release tag
+        required: true
+        default: v0.8.0
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - name: Download immutable verified bundle
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release }}
+        run: |
+          gh release download "$RELEASE_TAG" --pattern 'kuroi-pwa-v*.tar.gz' --pattern 'kuroi-pwa-v*.tar.gz.sha256'
+          sha256sum -c kuroi-pwa-v*.tar.gz.sha256
+          tar -xzf kuroi-pwa-v*.tar.gz
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - uses: actions/deploy-pages@v4
+        id: deployment

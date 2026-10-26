@@ -1,4 +1,5 @@
 import { LibraryFile } from "./core";
+import { appBase, libraryCachePrefix } from "./paths";
 export interface DownloadStatus {
   total: number;
   done: number;
@@ -24,17 +25,20 @@ export class OfflineLibrary {
   controller?: AbortController;
   onchange = () => {};
   async init() {
-    const response = await fetch("/library-manifest.json", {
+    const response = await fetch(new URL("library-manifest.json", appBase), {
       cache: "no-cache",
     });
     if (!response.ok) throw Error("자료 목록을 불러올 수 없습니다");
     const m = await response.json();
     this.version = m.version;
     this.files = m.files;
-    this.cache = await caches.open("kuroi-library-" + this.version);
+    this.cache = await caches.open(libraryCachePrefix + this.version);
   }
   url(path: string) {
-    return "/library/" + path.split("/").map(encodeURIComponent).join("/");
+    return new URL(
+      "library/" + path.split("/").map(encodeURIComponent).join("/"),
+      appBase,
+    ).href;
   }
   async has(path: string) {
     const f = this.files.find((f) => f.path === path);

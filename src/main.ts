@@ -48,6 +48,7 @@ import {
 } from "./core";
 import { OfflineLibrary } from "./offline";
 import { Paper } from "./pdf";
+import { appBase } from "./paths";
 const iconNodes: Record<string, IconNode> = {
   play: Play,
   pause: Pause,
@@ -451,6 +452,11 @@ function showPanel(title: string, content: () => string) {
   const overlay = document.querySelector<HTMLElement>("#overlay")!;
   overlay.innerHTML = `<section class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title"><header><h2 id="panel-title">${esc(title)}</h2>${button("close", "닫기", "close")}</header><div class="options">${content()}</div></section>`;
   overlay.hidden = false;
+  overlay
+    .querySelectorAll<HTMLAnchorElement>('a[href^="/licenses/"]')
+    .forEach(
+      (a) => (a.href = new URL(a.getAttribute("href")!.slice(1), appBase).href),
+    );
   root.querySelector<HTMLElement>(".workspace")!.inert = true;
   document.querySelector<HTMLElement>("#chrome")!.inert = true;
   document.querySelector<HTMLElement>("#transport")!.inert = true;
@@ -1197,6 +1203,7 @@ function mount() {
       "",
     )}</div></div></div></footer><div id="overlay" hidden></div><div id="toast" role="status" hidden></div><input id="backup-file" type="file" accept="application/json,.json" hidden>`;
   score = new Paper(document.querySelector("#score-paper")!);
+  root.querySelector<HTMLAnchorElement>(".brand")!.href = appBase.href;
   script = new Paper(document.querySelector("#script-paper")!);
   score.onTap = tapScore;
   score.onPrimeTap = () => {
@@ -1235,7 +1242,9 @@ async function init() {
     const mixes = await offline.json("mix-catalog.json");
     tracks = [...catalog.tracks, ...mixes.tracks];
     mount();
-    await navigator.serviceWorker.register("/sw.js", { scope: "/" });
+    await navigator.serviceWorker.register(new URL("sw.js", appBase), {
+      scope: appBase.pathname,
+    });
     if (isolated)
       Object.assign(window, {
         kuroiAudit: {

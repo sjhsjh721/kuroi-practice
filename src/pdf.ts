@@ -6,6 +6,7 @@ import {
 } from "pdfjs-dist";
 import workerURL from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 import { Mark } from "./core";
+import { appBase } from "./paths";
 GlobalWorkerOptions.workerSrc = workerURL;
 const documents = new Map<string, Promise<PDFDocumentProxy>>();
 export class Paper {
@@ -167,7 +168,7 @@ export class Paper {
       let doc = documents.get(path);
       if (!doc) {
         doc = getDocument({
-          url: "/library/" + encodeURIComponent(path),
+          url: new URL("library/" + encodeURIComponent(path), appBase).href,
           disableAutoFetch: true,
         }).promise;
         documents.set(path, doc);
