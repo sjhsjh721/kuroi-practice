@@ -3,7 +3,7 @@ import { writeFileSync } from "node:fs";
 test("all 241 PDF pages and score role overlays", async ({ page }, info) => {
   if (info.project.name !== "webkit-ipad") test.skip();
   test.setTimeout(300000);
-  await page.goto("/?verification");
+  await page.goto("./?verification");
   await page
     .getByRole("button", {
       name: "선관 선관귀신 · 무당 · 아저씨(배수환) · 사이토 백작",
@@ -77,7 +77,7 @@ test("download pause/resume, role pack and backup import/export", async ({
   page,
 }, info) => {
   if (info.project.name !== "chromium-phone") test.skip();
-  await page.goto("/?verification");
+  await page.goto("./?verification");
   await page.getByRole("button", { name: "해웅 해웅 · 박해영" }).click();
   await page.waitForFunction(() => !!(window as any).kuroiAudit);
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);

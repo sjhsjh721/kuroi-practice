@@ -3,7 +3,7 @@ test("narrow phone, fold, tablet and rotated controls remain reachable", async (
   page,
 }, info) => {
   if (info.project.name !== "chromium-phone") test.skip();
-  await page.goto("/?verification");
+  await page.goto("./?verification");
   await page
     .getByRole("button", {
       name: "선관 선관귀신 · 무당 · 아저씨(배수환) · 사이토 백작",

@@ -9,7 +9,7 @@ const catalog = JSON.parse(readFileSync(source + "catalog.json", "utf8")),
   ),
   mixes = JSON.parse(readFileSync(source + "mix-catalog.json", "utf8"));
 async function start(page: Page) {
-  await page.goto("/?verification");
+  await page.goto("./?verification");
   await page.getByRole("dialog").waitFor();
   await page
     .getByRole("button", {
@@ -217,7 +217,7 @@ test("complete download, offline reload and cached audio seeking", async ({
     .toBeGreaterThan(45.1);
   await page.getByRole("button", { name: "일시정지", exact: true }).click();
   const range = await page.evaluate(async () => {
-    const r = await fetch("/library/mr_1.mp3", {
+    const r = await fetch((window as any).kuroiAudit.offline.url("mr_1.mp3"), {
       headers: { Range: "bytes=100-199" },
     });
     return {

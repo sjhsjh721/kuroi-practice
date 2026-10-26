@@ -1,5 +1,7 @@
 # 쿠로이 연습실 PWA
 
+설치 링크: **https://sjhsjh721.github.io/kuroi-practice/**
+
 악보·대본과 기존 자동 시간표·배역 형광 좌표를 그대로 사용하는 설치형 웹앱입니다. Native 0.7.0의 원본 92개 음원과 MR+화음 58개, PDF 18개를 모두 제공합니다. 기존 Android·iOS 프로젝트는 변경하지 않습니다.
 
 ## 설치와 오프라인 연습
@@ -33,6 +35,8 @@ pnpm install --frozen-lockfile
 pnpm build
 pnpm preview
 pnpm test
+# 공개 배포 주소의 같은 시나리오 검증
+PWA_BASE_URL=https://sjhsjh721.github.io/kuroi-practice/ pnpm test
 ```
 
 일반 HTTPS 정적 호스팅에 `dist/`를 올립니다. Service Worker는 HTTPS 또는 localhost에서만 동작합니다. 경로는 루트와 GitHub Pages의 하위 경로를 모두 지원합니다. 별도 서버·DB·유료 Apple 개발자 계정은 필요하지 않습니다.
