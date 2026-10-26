@@ -1,0 +1,24 @@
+{
+  "name": "kuroi-rehearsal-pwa",
+  "version": "0.8.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare:library": "python3 scripts/prepare_library.py",
+    "dev": "vite --host 127.0.0.1",
+    "check": "tsc --noEmit",
+    "build": "pnpm prepare:library && pnpm check && vite build && node scripts/build-shell.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "test": "playwright test"
+  },
+  "dependencies": {
+    "lucide": "^1.61.0",
+    "pdfjs-dist": "^6.4.299"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "prettier": "^3.9.10",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}

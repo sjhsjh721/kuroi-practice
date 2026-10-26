@@ -1,0 +1,10 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: same-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+/sw.js
+  Cache-Control: no-cache
+/shell-manifest.json
+  Cache-Control: no-cache
+/library-manifest.json
+  Cache-Control: no-cache
