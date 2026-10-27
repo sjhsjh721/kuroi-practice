@@ -12,6 +12,8 @@ export interface Track {
   title: string;
   path: string;
   reference?: string;
+  layout?: string;
+  previousPath?: string;
 }
 export interface Cue {
   ms: number;
@@ -105,7 +107,11 @@ export function validateBackup(
     throw Error("올바른 보정 백업 파일을 선택하세요");
   const result: Record<string, Cue[]> = {};
   for (const [key, v] of Object.entries(o.entries)) {
-    const t = tracks.find((t) => key === "cues_" + t.path);
+    const t = tracks.find(
+      (t) =>
+        key === "cues_" + t.path ||
+        (t.previousPath && key === "cues_" + t.previousPath),
+    );
     if (!t || !Array.isArray(v) || v.length > 5000)
       throw Error("알 수 없는 음원 또는 지점 수 초과");
     const s = songs.find((s) => s.number === t.number)!;
@@ -131,14 +137,17 @@ export function validateBackup(
   const hidden: Record<string, string[]> = {};
   if (o.hidden)
     for (const [key, v] of Object.entries(o.hidden)) {
+      const track = tracks.find(
+        (t) => t.path === key || t.previousPath === key,
+      );
       if (
-        !tracks.some((t) => t.path === key) ||
+        !track ||
         !Array.isArray(v) ||
         v.length > 5000 ||
         v.some((x) => typeof x !== "string" || !/^\d+_\d+_\d+$/.test(x))
       )
         throw Error("숨긴 지점 데이터가 올바르지 않습니다");
-      hidden[key] = v;
+      hidden[track.path] = v;
     }
   return { custom: result, hidden };
 }

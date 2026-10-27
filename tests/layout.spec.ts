@@ -10,6 +10,8 @@ test("narrow phone, fold, tablet and rotated controls remain reachable", async (
     })
     .click();
   await page.waitForFunction(() => !!(window as any).kuroiAudit);
+  await page.locator('[data-action="audio"]').click();
+  await page.getByRole("button", { name: /MR\+화음 · 선관/ }).click();
   for (const [width, height] of [
     [320, 568],
     [360, 780],

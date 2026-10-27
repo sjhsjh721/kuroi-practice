@@ -111,12 +111,15 @@ type Saved = {
   role: string;
   seen: boolean;
   downloadPrompted: boolean;
+  mixReleaseSeen: boolean;
   highlight: boolean;
   mode: number;
   fullscreen: boolean;
   lead: number;
   rate: number;
   volume: number;
+  mixMR: number;
+  mixHarmony: number;
   positions: Record<string, number>;
   custom: Record<string, Cue[]>;
   hidden: Record<string, string[]>;
@@ -128,12 +131,15 @@ const defaults: Saved = {
   role: "",
   seen: false,
   downloadPrompted: false,
+  mixReleaseSeen: false,
   highlight: true,
   mode: innerWidth < 600 ? 2 : 0,
   fullscreen: false,
   lead: 1.5,
   rate: 1,
   volume: 0.9,
+  mixMR: 0.8,
+  mixHarmony: 0.8,
   positions: {},
   custom: {},
   hidden: {},
@@ -183,12 +189,16 @@ let songIndex = 0,
   loop = false,
   toastTimer: number,
   downloadPaths: string[] = [],
+  suggestedPaths: string[] = [],
   panelActions = new Map<string, () => void>(),
   panelTitle = "",
   isSeeking = false,
   lastSave = 0,
   audioContext: AudioContext | undefined,
-  gain: GainNode | undefined;
+  gain: GainNode | undefined,
+  directGain: GainNode | undefined,
+  mrGain: GainNode | undefined,
+  harmonyGain: GainNode | undefined;
 let score: Paper, script: Paper;
 const root = document.querySelector<HTMLElement>("#app")!;
 function notify(message: string) {
@@ -243,6 +253,7 @@ function selectTrack(t: Track) {
   audio.load();
   audio.playbackRate = saved.rate;
   audio.volume = audioContext ? 1 : saved.volume;
+  applyVolumes();
   applyCue(pendingSeek);
   save();
   update();
@@ -268,12 +279,78 @@ function prepareAudio() {
     audioContext = new AudioContext();
     const source = audioContext.createMediaElementSource(audio);
     gain = audioContext.createGain();
-    source.connect(gain);
+    directGain = audioContext.createGain();
+    mrGain = audioContext.createGain();
+    harmonyGain = audioContext.createGain();
+    gain.gain.value = saved.volume;
+    directGain.gain.value = separatedMix() ? 0 : 1;
+    mrGain.gain.value = separatedMix() ? saved.mixMR : 0;
+    harmonyGain.gain.value = separatedMix() ? saved.mixHarmony : 0;
+    const splitter = audioContext.createChannelSplitter(2);
+    const mixBus = audioContext.createGain();
+    const limiter = audioContext.createWaveShaper();
+    const curve = new Float32Array(65537);
+    for (let i = 0; i < curve.length; i++) {
+      const x = ((i / (curve.length - 1)) * 2 - 1) * 2;
+      curve[i] =
+        Math.abs(x) <= 0.75
+          ? x
+          : Math.sign(x) * (0.75 + 0.2 * Math.tanh((Math.abs(x) - 0.75) / 0.2));
+    }
+    // The curve covers a ±2 input range; unity gain below its soft peak knee.
+    // The original stereo MR/AR route bypasses the mix limiter entirely.
+    mixBus.gain.value = 0.5;
+    limiter.curve = curve;
+    limiter.oversample = "2x";
+    source.connect(directGain);
+    directGain.connect(gain);
+    source.connect(splitter);
+    splitter.connect(mrGain, 0);
+    splitter.connect(harmonyGain, 1);
+    mrGain.connect(mixBus);
+    harmonyGain.connect(mixBus);
+    mixBus.connect(limiter);
+    limiter.connect(gain);
     gain.connect(audioContext.destination);
   }
-  gain!.gain.value = saved.volume;
+  applyVolumes();
   audio.volume = 1;
   if (audioContext.state !== "running") void audioContext.resume();
+}
+function separatedMix() {
+  return track?.layout === "mr-left-harmony-right-v2";
+}
+function applyVolumes() {
+  if (!audioContext || !gain) {
+    audio.volume = saved.volume;
+    return;
+  }
+  const now = audioContext.currentTime;
+  gain.gain.setTargetAtTime(saved.volume, now, 0.01);
+  directGain!.gain.setTargetAtTime(separatedMix() ? 0 : 1, now, 0.01);
+  mrGain!.gain.setTargetAtTime(separatedMix() ? saved.mixMR : 0, now, 0.01);
+  harmonyGain!.gain.setTargetAtTime(
+    separatedMix() ? saved.mixHarmony : 0,
+    now,
+    0.01,
+  );
+}
+function volumeMenu() {
+  showPanel(separatedMix() ? "MR·화음 밸런스" : "음량", () =>
+    (separatedMix()
+      ? [
+          ["mix-mr", "MR", saved.mixMR],
+          ["mix-harmony", "화음", saved.mixHarmony],
+        ]
+      : []
+    )
+      .concat([["volume", "전체", saved.volume]])
+      .map(
+        ([id, label, value]) =>
+          `<label class="slider-field">${label} <output id="${id}-value">${Math.round(Number(value) * 100)}%</output><input id="${id}" type="range" min="0" max="1" step="0.01" value="${value}" aria-label="${label} 음량"></label>`,
+      )
+      .join(""),
+  );
 }
 async function play() {
   try {
@@ -374,6 +451,10 @@ function tapScore(x: number, y: number) {
   window.setTimeout(() => paper.classList.remove("tapped"), 450);
 }
 function transport() {
+  const balance = document.querySelector<HTMLButtonElement>(
+    '[data-action="mix-balance"]',
+  );
+  if (balance) balance.hidden = !separatedMix();
   if (!track) return;
   const position = pendingSeek ?? audio.currentTime;
   document.querySelector("#current-time")!.textContent = clock(position);
@@ -606,26 +687,37 @@ async function importPersonalScript(file: File) {
   }
 }
 function recordingMenu() {
-  showPanel("음원 선택", () =>
-    tracks
-      .filter((t) => t.number === currentSong().number)
-      .map((t) =>
-        row(
-          t.type + (t.role ? " · " + t.role : ""),
-          t.type === "MR+화음"
-            ? "자동 정렬 미리듣기"
-            : t.type === "화음"
-              ? t.title
-              : "",
-          () => {
-            selectTrack(t);
-            closePanel();
-          },
-          track.path === t.path,
-          t.type === "MR+화음" ? "role" : "score",
-        ),
-      )
-      .join(""),
+  showPanel(
+    "음원 선택",
+    () =>
+      tracks
+        .filter((t) => t.number === currentSong().number)
+        .map((t) =>
+          row(
+            t.type + (t.role ? " · " + t.role : ""),
+            t.type === "MR+화음"
+              ? "자동 정렬 미리듣기"
+              : t.type === "화음"
+                ? t.title
+                : "",
+            () => {
+              selectTrack(t);
+              closePanel();
+            },
+            track.path === t.path,
+            t.type === "MR+화음" ? "role" : "score",
+          ),
+        )
+        .join("") +
+      (separatedMix()
+        ? row(
+            "MR·화음 밸런스",
+            "두 소리를 각각 조절",
+            volumeMenu,
+            false,
+            "volume",
+          )
+        : ""),
   );
 }
 function songsMenu() {
@@ -743,10 +835,17 @@ function confirm(title: string, detail: string, accept: () => void) {
 }
 function exportBackup() {
   const entries = Object.fromEntries(
-    Object.entries(saved.custom).map(([k, v]) => ["cues_" + k, v]),
+    tracks
+      .filter((t) => saved.custom[t.path])
+      .map((t) => ["cues_" + (t.previousPath || t.path), saved.custom[t.path]]),
+  );
+  const hidden = Object.fromEntries(
+    tracks
+      .filter((t) => saved.hidden[t.path])
+      .map((t) => [t.previousPath || t.path, saved.hidden[t.path]]),
   );
   const blob = new Blob(
-    [JSON.stringify({ version: 1, entries, hidden: saved.hidden }, null, 2)],
+    [JSON.stringify({ version: 1, entries, hidden }, null, 2)],
     { type: "application/json" },
   );
   const url = URL.createObjectURL(blob);
@@ -795,14 +894,9 @@ function tools() {
         "refresh",
       ) +
       row(
-        "음량",
+        separatedMix() ? "MR·화음 밸런스" : "음량",
         "",
-        () =>
-          showPanel(
-            "음량",
-            () =>
-              `<label class="slider-field">음원 음량 <output id="volume-value">${Math.round(saved.volume * 100)}%</output><input id="volume" type="range" min="0" max="1" step="0.01" value="${saved.volume}" aria-label="음원 음량"></label>`,
-          ),
+        volumeMenu,
         false,
         "volume",
       ) +
@@ -858,29 +952,56 @@ function pack(kind: string) {
   return [...new Set([...base, ...selected.map((t) => t.path)])];
 }
 async function recommendDownload() {
-  if (saved.downloadPrompted) return;
+  if (saved.downloadPrompted && saved.mixReleaseSeen) return;
+  let updating = false;
+  if (saved.downloadPrompted) {
+    updating = (
+      await Promise.all(
+        tracks
+          .filter((t) => t.previousPath)
+          .map(
+            async (t) =>
+              !(await offline.has(t.path)) &&
+              (await offline.hasPrevious(t.previousPath!)),
+          ),
+      )
+    ).some(Boolean);
+    if (!updating) {
+      saved.mixReleaseSeen = true;
+      save();
+      return;
+    }
+  }
   const kind = saved.role ? "role" : "song";
-  const inventory = await offline.inventory(pack(kind));
-  if (saved.downloadPrompted) return;
+  const paths = updating && downloadPaths.length ? downloadPaths : pack(kind);
+  const inventory = await offline.inventory(paths);
+  if (!updating && saved.downloadPrompted) return;
   if (inventory.done === inventory.total) {
     saved.downloadPrompted = true;
+    saved.mixReleaseSeen = true;
     save();
     return;
   }
   const el = document.querySelector<HTMLElement>("#download-suggestion")!;
-  el.innerHTML = `${svg("offline")}<div><strong>${saved.role ? "내 배역" : "현재 넘버"} 저장 권장</strong><small>인터넷 없이 연습 · ${megabytes(inventory.bytes - inventory.savedBytes)}</small></div><div class="suggestion-actions">${button("suggest-download", "추천 자료 다운로드", "download", "다운로드")}<button data-action="suggest-later">나중에</button></div>`;
+  suggestedPaths = paths;
+  el.innerHTML = `${svg("offline")}<div><strong>${updating ? "MR·화음 보정 자료" : (saved.role ? "내 배역" : "현재 넘버") + " 저장 권장"}</strong><small>${updating ? "변경된 파일만 저장" : "인터넷 없이 연습"} · ${megabytes(inventory.bytes - inventory.savedBytes)}</small></div><div class="suggestion-actions">${button("suggest-download", "추천 자료 다운로드", "download", "다운로드")}<button data-action="suggest-later">나중에</button></div>`;
   el.hidden = false;
   update();
 }
 function dismissDownloadSuggestion() {
   saved.downloadPrompted = true;
+  saved.mixReleaseSeen = true;
+  suggestedPaths = [];
   save();
   document.querySelector<HTMLElement>("#download-suggestion")!.hidden = true;
   update();
 }
 function startDownload(kind: string) {
+  startDownloadPaths(pack(kind));
+}
+function startDownloadPaths(paths: string[]) {
   if (offline.status.active) return;
-  downloadPaths = pack(kind);
+  downloadPaths = paths;
   try {
     localStorage.setItem(
       storageKey + "-download-plan",
@@ -1047,6 +1168,9 @@ function bind() {
       case "audio":
         recordingMenu();
         break;
+      case "mix-balance":
+        volumeMenu();
+        break;
       case "role":
         chooseRole();
         break;
@@ -1063,10 +1187,9 @@ function bind() {
         dismissDownloadSuggestion();
         break;
       case "suggest-download":
+        const paths = suggestedPaths;
         dismissDownloadSuggestion();
-        void downloads().then(() =>
-          startDownload(saved.role ? "role" : "song"),
-        );
+        void downloads().then(() => startDownloadPaths(paths));
         break;
       case "toggle":
         audio.paused ? void play() : pause();
@@ -1212,12 +1335,17 @@ function bind() {
   });
   root.addEventListener("input", (e) => {
     const input = e.target as HTMLInputElement;
-    if (input.id === "volume") {
-      saved.volume = Number(input.value);
-      if (gain) gain.gain.value = saved.volume;
-      else audio.volume = saved.volume;
-      document.querySelector("#volume-value")!.textContent =
-        Math.round(saved.volume * 100) + "%";
+    if (["volume", "mix-mr", "mix-harmony"].includes(input.id)) {
+      const key =
+        input.id === "volume"
+          ? "volume"
+          : input.id === "mix-mr"
+            ? "mixMR"
+            : "mixHarmony";
+      saved[key] = Number(input.value);
+      applyVolumes();
+      document.querySelector(`#${input.id}-value`)!.textContent =
+        Math.round(saved[key] * 100) + "%";
       save();
     }
     if (input.id === "seek") {
@@ -1343,6 +1471,13 @@ function mount() {
       "",
     )}</div></div></div></footer><div id="overlay" hidden></div><div id="toast" role="status" hidden></div><input id="backup-file" type="file" accept="application/json,.json" hidden>`;
   score = new Paper(document.querySelector("#score-paper")!);
+  const balanceButton = document.createElement("button");
+  balanceButton.dataset.action = "mix-balance";
+  balanceButton.setAttribute("aria-label", "MR·화음 밸런스");
+  balanceButton.title = "MR·화음 밸런스";
+  balanceButton.innerHTML = svg("volume");
+  balanceButton.hidden = true;
+  root.querySelector(".source-controls")!.append(balanceButton);
   const suggestion = document.createElement("aside");
   suggestion.id = "download-suggestion";
   suggestion.setAttribute("aria-label", "오프라인 연습 준비");
@@ -1385,11 +1520,21 @@ async function init() {
         localStorage.getItem(storageKey + "-download-plan") || "[]",
       );
       if (Array.isArray(plan))
-        downloadPaths = plan.filter(
-          (path: unknown) =>
-            typeof path === "string" &&
-            offline.files.some((f) => f.path === path),
-        );
+        downloadPaths = plan
+          .map((path: unknown) =>
+            typeof path === "string"
+              ? path === "mix-catalog.json"
+                ? "mix-catalog-v2.json"
+                : path.startsWith("mixes/harmony_")
+                  ? path.replace("mixes/", "mixes/v2/")
+                  : path
+              : path,
+          )
+          .filter(
+            (path: unknown): path is string =>
+              typeof path === "string" &&
+              offline.files.some((f) => f.path === path),
+          );
     } catch {}
     [catalog, timeline, navigation, highlights] = await Promise.all(
       [
@@ -1399,8 +1544,17 @@ async function init() {
         "role-highlights.json",
       ].map((p) => offline.json(p)),
     );
-    const mixes = await offline.json("mix-catalog.json");
+    const mixes = await offline.json("mix-catalog-v2.json");
     tracks = [...catalog.tracks, ...mixes.tracks];
+    for (const t of tracks)
+      if (t.previousPath) {
+        if (saved.positions[t.previousPath] !== undefined)
+          saved.positions[t.path] ??= saved.positions[t.previousPath];
+        if (saved.custom[t.previousPath])
+          saved.custom[t.path] ??= saved.custom[t.previousPath];
+        if (saved.hidden[t.previousPath])
+          saved.hidden[t.path] ??= saved.hidden[t.previousPath];
+      }
     let restoreError = false;
     try {
       personalScript = await scriptStore.read();
@@ -1440,6 +1594,9 @@ async function init() {
             };
           },
           audio,
+          get audioGraph() {
+            return { context: audioContext, master: gain };
+          },
           offline,
           catalog,
           tracks,

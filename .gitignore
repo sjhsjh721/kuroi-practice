@@ -1,7 +1,12 @@
 node_modules/
 public/library/
 dist/
+generated/
+.venv-audio/
+data/sync-v2/
+artifacts/
 test-results/
 playwright-report/
 .wrangler/
 .DS_Store
+__pycache__/

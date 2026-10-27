@@ -71,14 +71,41 @@ self.addEventListener("fetch", (event) => {
       if (url.pathname.startsWith(at("library/"))) {
         if (event.request.headers.get("X-Kuroi-Download") === "1")
           return fetch(event.request);
-        const manifest = await caches.match(at("library-manifest.json"));
+        const manifest = await caches.match(at("library-manifest-v2.json"));
         if (manifest) {
           const m = await manifest.json();
-          const cache = await caches.open(
-            "kuroi-library-" + scopeKey + "-" + m.version,
+          const relative = decodeURIComponent(
+            url.pathname.slice(at("library/").length),
           );
-          const hit = await cache.match(url.pathname);
-          if (hit) return rangeResponse(event.request, hit);
+          let file = m.files.find((f) => f.path === relative);
+          if (
+            !file &&
+            (relative === "mix-catalog.json" ||
+              relative.startsWith("mixes/harmony_"))
+          ) {
+            const legacy = await caches.match(at("library-manifest.json"));
+            if (legacy)
+              file = (await legacy.json()).files.find(
+                (f) => f.path === relative,
+              );
+          }
+          if (file) {
+            const prefix = "kuroi-library-" + scopeKey + "-";
+            const current = prefix + m.version;
+            const keys = [
+              current,
+              ...(await caches.keys()).filter(
+                (k) => k.startsWith(prefix) && k !== current,
+              ),
+            ];
+            for (const key of keys) {
+              const hit = await (await caches.open(key)).match(url.pathname);
+              // Reuse unchanged downloads from an earlier release, but never
+              // play an old premix as if it contained separate MR/guide channels.
+              if (hit?.headers.get("X-Kuroi-SHA256") === file.sha256)
+                return rangeResponse(event.request, hit);
+            }
+          }
         }
         return fetch(event.request).catch(
           () => new Response("Offline", { status: 503 }),

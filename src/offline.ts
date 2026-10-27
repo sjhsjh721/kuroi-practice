@@ -13,6 +13,7 @@ export class OfflineLibrary {
   version = "";
   files: LibraryFile[] = [];
   cache!: Cache;
+  caches: Cache[] = [];
   status: DownloadStatus = {
     total: 0,
     done: 0,
@@ -25,7 +26,7 @@ export class OfflineLibrary {
   controller?: AbortController;
   onchange = () => {};
   async init() {
-    const response = await fetch(new URL("library-manifest.json", appBase), {
+    const response = await fetch(new URL("library-manifest-v2.json", appBase), {
       cache: "no-cache",
     });
     if (!response.ok) throw Error("자료 목록을 불러올 수 없습니다");
@@ -33,6 +34,15 @@ export class OfflineLibrary {
     this.version = m.version;
     this.files = m.files;
     this.cache = await caches.open(libraryCachePrefix + this.version);
+    const older = (await caches.keys()).filter(
+      (key) =>
+        key.startsWith(libraryCachePrefix) &&
+        key !== libraryCachePrefix + this.version,
+    );
+    this.caches = [
+      this.cache,
+      ...(await Promise.all(older.map((key) => caches.open(key)))),
+    ];
   }
   url(path: string) {
     return new URL(
@@ -41,16 +51,28 @@ export class OfflineLibrary {
     ).href;
   }
   async has(path: string) {
+    return !!(await this.cached(path));
+  }
+  async cached(path: string) {
     const f = this.files.find((f) => f.path === path);
-    if (!f) return false;
-    const r = await this.cache.match(this.url(path));
-    return r?.headers.get("X-Kuroi-SHA256") === f.sha256;
+    if (!f) return;
+    for (const cache of this.caches) {
+      const r = await cache.match(this.url(path));
+      if (r?.headers.get("X-Kuroi-SHA256") === f.sha256) return r;
+    }
+  }
+  async hasPrevious(path: string) {
+    for (const cache of this.caches) {
+      const response = await cache.match(this.url(path));
+      if (response?.headers.has("X-Kuroi-SHA256")) return true;
+    }
+    return false;
   }
   async fetchFile(path: string, signal?: AbortSignal) {
     const f = this.files.find((f) => f.path === path);
     if (!f) throw Error("자료 목록에 없는 파일");
-    const cached = await this.cache.match(this.url(path));
-    if (cached?.headers.get("X-Kuroi-SHA256") === f.sha256) return cached;
+    const cached = await this.cached(path);
+    if (cached) return cached;
     const r = await fetch(this.url(path), {
       signal,
       cache: "no-store",
@@ -141,7 +163,14 @@ export class OfflineLibrary {
   }
   async remove(paths: string[]) {
     if (this.status.active) throw Error("다운로드를 일시정지한 뒤 삭제하세요");
-    for (const path of paths) await this.cache.delete(this.url(path));
+    const selected = new Set(paths);
+    for (const path of paths) {
+      if (path.startsWith("mixes/v2/"))
+        selected.add(path.replace("mixes/v2/", "mixes/"));
+      if (path === "mix-catalog-v2.json") selected.add("mix-catalog.json");
+    }
+    for (const path of selected)
+      for (const cache of this.caches) await cache.delete(this.url(path));
     this.onchange();
   }
 }
