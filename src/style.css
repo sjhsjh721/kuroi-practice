@@ -590,6 +590,44 @@ a {
 .download-summary {
   padding: 14px 13px;
 }
+#download-suggestion {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 8px 16px;
+  background: #263425;
+  border-bottom: 1px solid #4b6043;
+}
+#download-suggestion > svg {
+  color: var(--green);
+  flex-shrink: 0;
+}
+#download-suggestion strong,
+#download-suggestion small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+}
+#download-suggestion small {
+  color: #acbca7;
+  font-size: 10px;
+}
+.suggestion-actions {
+  display: flex;
+  margin-left: auto;
+  gap: 4px;
+}
+.suggestion-actions button {
+  min-height: 34px;
+  font-size: 11px;
+  padding: 5px 8px;
+}
+.suggestion-actions [data-action="suggest-download"] {
+  background: var(--green);
+  color: #172016;
+}
 .eyebrow {
   font-size: 9px;
   letter-spacing: 0.14em;

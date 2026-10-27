@@ -107,6 +107,7 @@ type Saved = {
   part: string;
   role: string;
   seen: boolean;
+  downloadPrompted: boolean;
   highlight: boolean;
   mode: number;
   fullscreen: boolean;
@@ -123,6 +124,7 @@ const defaults: Saved = {
   part: "",
   role: "",
   seen: false,
+  downloadPrompted: false,
   highlight: true,
   mode: innerWidth < 600 ? 2 : 0,
   fullscreen: false,
@@ -460,6 +462,7 @@ function showPanel(title: string, content: () => string) {
   root.querySelector<HTMLElement>(".workspace")!.inert = true;
   document.querySelector<HTMLElement>("#chrome")!.inert = true;
   document.querySelector<HTMLElement>("#transport")!.inert = true;
+  document.querySelector<HTMLElement>("#download-suggestion")!.inert = true;
   requestAnimationFrame(() =>
     overlay.querySelector<HTMLElement>("button,input")?.focus(),
   );
@@ -469,6 +472,7 @@ function closePanel() {
   root.querySelector<HTMLElement>(".workspace")!.inert = false;
   document.querySelector<HTMLElement>("#chrome")!.inert = false;
   document.querySelector<HTMLElement>("#transport")!.inert = false;
+  document.querySelector<HTMLElement>("#download-suggestion")!.inert = false;
   panelTitle = "";
   document.querySelector<HTMLElement>('[data-action="tools"]')?.focus();
 }
@@ -488,6 +492,7 @@ function chooseRole() {
               save();
               closePanel();
               update();
+              void recommendDownload();
             },
             saved.role === p.id,
             "role",
@@ -511,6 +516,7 @@ function chooseRole() {
             saved.seen = true;
             save();
             closePanel();
+            void recommendDownload();
           })
         : ""),
   );
@@ -760,6 +766,38 @@ function pack(kind: string) {
         );
   return [...new Set([...base, ...selected.map((t) => t.path)])];
 }
+async function recommendDownload() {
+  if (saved.downloadPrompted) return;
+  const kind = saved.role ? "role" : "song";
+  const inventory = await offline.inventory(pack(kind));
+  if (saved.downloadPrompted) return;
+  if (inventory.done === inventory.total) {
+    saved.downloadPrompted = true;
+    save();
+    return;
+  }
+  const el = document.querySelector<HTMLElement>("#download-suggestion")!;
+  el.innerHTML = `${svg("offline")}<div><strong>${saved.role ? "내 배역" : "현재 넘버"} 저장 권장</strong><small>인터넷 없이 연습 · ${megabytes(inventory.bytes - inventory.savedBytes)}</small></div><div class="suggestion-actions">${button("suggest-download", "추천 자료 다운로드", "download", "다운로드")}<button data-action="suggest-later">나중에</button></div>`;
+  el.hidden = false;
+  update();
+}
+function dismissDownloadSuggestion() {
+  saved.downloadPrompted = true;
+  save();
+  document.querySelector<HTMLElement>("#download-suggestion")!.hidden = true;
+  update();
+}
+function startDownload(kind: string) {
+  if (offline.status.active) return;
+  downloadPaths = pack(kind);
+  try {
+    localStorage.setItem(
+      storageKey + "-download-plan",
+      JSON.stringify(downloadPaths),
+    );
+  } catch {}
+  void offline.download(downloadPaths);
+}
 function downloadProgress() {
   if (panelTitle !== "자료 다운로드") return;
   const s = offline.status;
@@ -814,14 +852,7 @@ async function downloads() {
               chooseRole();
               return;
             }
-            downloadPaths = paths;
-            try {
-              localStorage.setItem(
-                storageKey + "-download-plan",
-                JSON.stringify(paths),
-              );
-            } catch {}
-            void offline.download(paths);
+            startDownload(kind);
           });
           return `<button class="option" data-option="${id}" data-pack="${kind}">${svg("download")}<span><strong>${title}</strong><small>${kind === "role" ? (saved.role || "배역 선택 필요") + " · " : ""}${paths.length}개 · ${megabytes(bytes)}</small></span>${svg("next")}</button>`;
         })
@@ -933,6 +964,15 @@ function bind() {
         break;
       case "download":
         void downloads();
+        break;
+      case "suggest-later":
+        dismissDownloadSuggestion();
+        break;
+      case "suggest-download":
+        dismissDownloadSuggestion();
+        void downloads().then(() =>
+          startDownload(saved.role ? "role" : "song"),
+        );
         break;
       case "toggle":
         audio.paused ? void play() : pause();
@@ -1203,6 +1243,11 @@ function mount() {
       "",
     )}</div></div></div></footer><div id="overlay" hidden></div><div id="toast" role="status" hidden></div><input id="backup-file" type="file" accept="application/json,.json" hidden>`;
   score = new Paper(document.querySelector("#score-paper")!);
+  const suggestion = document.createElement("aside");
+  suggestion.id = "download-suggestion";
+  suggestion.setAttribute("aria-label", "오프라인 연습 준비");
+  suggestion.hidden = true;
+  root.insertBefore(suggestion, root.querySelector(".workspace"));
   root.querySelector<HTMLAnchorElement>(".brand")!.href = appBase.href;
   script = new Paper(document.querySelector("#script-paper")!);
   score.onTap = tapScore;
@@ -1214,6 +1259,7 @@ function mount() {
   bind();
   chooseSong(Math.max(0, Math.min(saved.song, catalog.songs.length - 1)));
   if (!saved.seen) chooseRole();
+  else void recommendDownload();
 }
 async function init() {
   try {

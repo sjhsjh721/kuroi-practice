@@ -14,7 +14,9 @@ const paths = await walk("dist");
 const files = paths.map((p) => p.slice(5));
 const h = createHash("sha256");
 for (const p of paths) h.update(await readFile(p));
-await writeFile(
-  "dist/shell-manifest.json",
-  JSON.stringify({ version: h.digest("hex").slice(0, 16), files }),
-);
+const version = h.digest("hex").slice(0, 16);
+await writeFile("dist/shell-manifest.json", JSON.stringify({ version, files }));
+// Browsers compare service worker bytes to detect an update. Include the shell
+// hash so an installed PWA also picks up changes to the PDF viewer and app UI.
+const worker = await readFile("dist/sw.js", "utf8");
+await writeFile("dist/sw.js", `/* App shell ${version} */\n${worker}`);

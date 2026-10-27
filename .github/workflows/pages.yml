@@ -5,7 +5,7 @@ on:
       release:
         description: Verified bundle release tag
         required: true
-        default: v0.8.1
+        default: v0.8.2
 permissions:
   contents: read
   pages: write

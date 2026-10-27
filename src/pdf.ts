@@ -2,6 +2,7 @@ import {
   getDocument,
   GlobalWorkerOptions,
   type PDFDocumentProxy,
+  type PDFPageProxy,
   type RenderTask,
 } from "pdfjs-dist";
 import workerURL from "pdfjs-dist/build/pdf.worker.min.mjs?url";
@@ -23,6 +24,12 @@ export class Paper {
   key = "";
   generation = 0;
   renderTask?: RenderTask;
+  detailTask?: RenderTask;
+  detail?: HTMLCanvasElement;
+  detailTimer?: number;
+  detailGeneration = 0;
+  paper?: PDFPageProxy;
+  pageScale = 1;
   pointers = new Map<number, { x: number; y: number }>();
   down?: {
     x: number;
@@ -120,6 +127,7 @@ export class Paper {
       if (this.pointers.size === 0) {
         this.down = undefined;
         this.pinch = undefined;
+        this.scheduleDetail();
       }
     };
     root.addEventListener("pointerup", end);
@@ -127,6 +135,7 @@ export class Paper {
       this.pointers.clear();
       this.down = undefined;
       this.pinch = undefined;
+      this.scheduleDetail();
     });
     root.addEventListener(
       "wheel",
@@ -143,6 +152,87 @@ export class Paper {
   }
   transform() {
     this.sheet.style.transform = `translate(${this.dx}px,${this.dy}px) scale(${this.zoom})`;
+    this.scheduleDetail();
+  }
+  clearDetail() {
+    clearTimeout(this.detailTimer);
+    this.detailGeneration++;
+    this.detailTask?.cancel();
+    this.detailTask = undefined;
+    this.detail?.remove();
+    this.detail = undefined;
+  }
+  scheduleDetail() {
+    clearTimeout(this.detailTimer);
+    this.detailGeneration++;
+    this.detailTask?.cancel();
+    this.detailTask = undefined;
+    if (this.zoom <= 1) {
+      this.detail?.remove();
+      this.detail = undefined;
+      return;
+    }
+    if (this.paper)
+      this.detailTimer = window.setTimeout(() => void this.renderDetail(), 100);
+  }
+  async renderDetail() {
+    const paper = this.paper;
+    if (!paper || this.zoom <= 1) return;
+    const generation = this.detailGeneration;
+    const bounds = this.sheet.getBoundingClientRect();
+    const visible = this.viewport.getBoundingClientRect();
+    // Only rasterize the visible area. A full 5x tablet page can exceed the
+    // canvas memory limit on iOS; the fitted page stays underneath while moving.
+    const left = Math.max(0, (visible.left - bounds.left - 48) / this.zoom);
+    const top = Math.max(0, (visible.top - bounds.top - 48) / this.zoom);
+    const right = Math.min(
+      this.sheet.offsetWidth,
+      (visible.right - bounds.left + 48) / this.zoom,
+    );
+    const bottom = Math.min(
+      this.sheet.offsetHeight,
+      (visible.bottom - bounds.top + 48) / this.zoom,
+    );
+    const width = right - left,
+      height = bottom - top;
+    if (width <= 0 || height <= 0) return;
+    const screenWidth = width * this.zoom,
+      screenHeight = height * this.zoom;
+    const pixel = Math.min(
+      devicePixelRatio || 1,
+      4096 / screenWidth,
+      4096 / screenHeight,
+      Math.sqrt(8_000_000 / (screenWidth * screenHeight)),
+    );
+    const density = this.zoom * pixel;
+    const canvas = document.createElement("canvas");
+    canvas.className = "paper-detail";
+    canvas.width = Math.ceil(width * density);
+    canvas.height = Math.ceil(height * density);
+    Object.assign(canvas.style, {
+      position: "absolute",
+      left: left + "px",
+      top: top + "px",
+      width: width + "px",
+      height: height + "px",
+      pointerEvents: "none",
+    });
+    try {
+      const task = paper.render({
+        canvas,
+        viewport: paper.getViewport({ scale: this.pageScale * density }),
+        transform: [1, 0, 0, 1, -left * density, -top * density],
+      });
+      this.detailTask = task;
+      await task.promise;
+      if (generation !== this.detailGeneration) return;
+      this.detail?.remove();
+      this.detail = canvas;
+      this.sheet.insertBefore(canvas, this.marks);
+      this.detailTask = undefined;
+    } catch {
+      // A new page/gesture cancels stale detail. Keep the fitted canvas visible.
+    }
   }
   fit() {
     clearTimeout(this.tapTimer);
@@ -161,6 +251,8 @@ export class Paper {
     this.path = path;
     this.page = page;
     this.fit();
+    this.clearDetail();
+    this.paper = undefined;
     const generation = ++this.generation;
     this.renderTask?.cancel();
     this.notice.textContent = "불러오는 중";
@@ -182,6 +274,7 @@ export class Paper {
       const width = Math.max(100, rect.width - 24),
         height = Math.max(100, rect.height - 24);
       const scale = Math.min(width / unscaled.width, height / unscaled.height);
+      this.pageScale = scale;
       this.sheet.style.width = unscaled.width * scale + "px";
       this.sheet.style.height = unscaled.height * scale + "px";
       const pixel = Math.min(devicePixelRatio || 1, 2);
@@ -194,10 +287,12 @@ export class Paper {
       if (generation !== this.generation) return;
       this.canvas.replaceWith(canvas);
       this.canvas = canvas;
+      this.paper = paper;
       this.sheet.dataset.rendered = key;
       this.sheet.style.visibility = "visible";
       this.paintMarks(marks);
       this.notice.textContent = "";
+      this.scheduleDetail();
     } catch (e) {
       if (
         generation === this.generation &&
@@ -228,6 +323,8 @@ export class Paper {
   }
   resize() {
     if (this.path) {
+      this.clearDetail();
+      this.paper = undefined;
       this.key = "";
     }
   }
