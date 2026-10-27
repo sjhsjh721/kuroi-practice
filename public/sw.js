@@ -80,9 +80,17 @@ self.addEventListener("fetch", (event) => {
           const hit = await cache.match(url.pathname);
           if (hit) return rangeResponse(event.request, hit);
         }
-        return fetch(event.request);
+        return fetch(event.request).catch(
+          () => new Response("Offline", { status: 503 }),
+        );
       }
-      const shell = await caches.match(event.request, { ignoreSearch: true });
+      // Immutable app-shell files are identical for every Origin header. Module
+      // scripts may send Origin while install-time addAll does not (Vite varies
+      // on Origin); ignoring Vary prevents an offline cache miss in Chromium.
+      const shell = await caches.match(event.request, {
+        ignoreSearch: true,
+        ignoreVary: true,
+      });
       if (event.request.mode === "navigate") {
         try {
           return await fetch(event.request);
@@ -90,7 +98,7 @@ self.addEventListener("fetch", (event) => {
           return (await caches.match(at("index.html"))) || Response.error();
         }
       }
-      return shell || fetch(event.request);
+      return shell || fetch(event.request).catch(() => Response.error());
     })(),
   );
 });

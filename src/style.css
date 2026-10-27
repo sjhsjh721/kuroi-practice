@@ -273,6 +273,11 @@ a {
 .document-name svg {
   width: 15px;
 }
+.document-bar > .personal-script-button {
+  padding: 4px 5px;
+  min-width: 0;
+  gap: 4px;
+}
 .page-controls {
   display: flex;
   align-items: center;

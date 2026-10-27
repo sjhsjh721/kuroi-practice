@@ -10,6 +10,37 @@ import { Mark } from "./core";
 import { appBase } from "./paths";
 GlobalWorkerOptions.workerSrc = workerURL;
 const documents = new Map<string, Promise<PDFDocumentProxy>>();
+export async function openLocalPdf(blob: Blob, pages: number) {
+  if (blob.size > 50 * 1024 * 1024)
+    throw Error("50MB 이하 PDF를 선택해 주세요");
+  const task = getDocument({ data: new Uint8Array(await blob.arrayBuffer()) });
+  let pdf: PDFDocumentProxy;
+  try {
+    pdf = await task.promise;
+  } catch (e) {
+    await task.destroy();
+    throw Error(
+      (e as Error).name === "PasswordException"
+        ? "암호를 해제한 PDF를 선택해 주세요"
+        : "열 수 없는 PDF예요 · 파일을 확인해 주세요",
+    );
+  }
+  if (pdf.numPages !== pages) {
+    await task.destroy();
+    throw Error(
+      `자동 넘김을 유지하려면 원본과 같은 ${pages}쪽 PDF를 선택해 주세요`,
+    );
+  }
+  const path = "local-script:" + crypto.randomUUID();
+  documents.set(path, Promise.resolve(pdf));
+  return {
+    path,
+    dispose: () => {
+      documents.delete(path);
+      return task.destroy();
+    },
+  };
+}
 export class Paper {
   viewport: HTMLElement;
   sheet: HTMLElement;

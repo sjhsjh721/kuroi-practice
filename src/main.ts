@@ -10,6 +10,7 @@ import {
   Columns2,
   FileMusic,
   FileText,
+  FilePenLine,
   Scan,
   Repeat2,
   RotateCcw,
@@ -47,7 +48,8 @@ import {
   validateBackup,
 } from "./core";
 import { OfflineLibrary } from "./offline";
-import { Paper } from "./pdf";
+import { Paper, openLocalPdf } from "./pdf";
+import { ScriptStore, type PersonalScript } from "./personal";
 import { appBase } from "./paths";
 const iconNodes: Record<string, IconNode> = {
   play: Play,
@@ -59,6 +61,7 @@ const iconNodes: Record<string, IconNode> = {
   both: Columns2,
   score: FileMusic,
   script: FileText,
+  edit: FilePenLine,
   fit: Scan,
   repeat: Repeat2,
   back: RotateCcw,
@@ -137,6 +140,9 @@ const defaults: Saved = {
 };
 const isolated = new URLSearchParams(location.search).has("verification");
 const storageKey = isolated ? "kuroi-pwa-verification" : "kuroi-pwa-v1";
+const scriptStore = new ScriptStore(isolated);
+let personalScript: PersonalScript | undefined;
+let personalPdf: Awaited<ReturnType<typeof openLocalPdf>> | undefined;
 let saved: Saved = { ...defaults };
 try {
   saved = {
@@ -318,7 +324,7 @@ function documents() {
     void score.show(song.score, scorePage, roleMarks(song.score, scorePage));
   if (saved.mode !== 2)
     void script.show(
-      "script.pdf",
+      personalScript?.active && personalPdf ? personalPdf.path : "script.pdf",
       scriptPage,
       roleMarks("script.pdf", scriptPage),
     );
@@ -520,6 +526,84 @@ function chooseRole() {
           })
         : ""),
   );
+}
+function personalScriptMenu() {
+  showPanel(
+    "내 메모 대본",
+    () =>
+      `<p class="hint">이 기기에만 저장해요. 자동 넘김·형광 표시를 위해 원본 ${catalog.scriptPages}쪽의 순서와 배치를 유지한 PDF를 선택하세요.</p>` +
+      (personalScript
+        ? row(
+            "내 대본 사용",
+            personalScript.name,
+            () => void usePersonalScript(true),
+            personalScript.active,
+            "edit",
+          )
+        : "") +
+      row(
+        "원본 대본 사용",
+        "공유 대본",
+        () => void usePersonalScript(false),
+        !personalScript?.active,
+        "script",
+      ) +
+      row(
+        personalScript ? "PDF 바꾸기" : "PDF 선택",
+        "메모·필기가 담긴 PDF · 50MB 이하",
+        () => document.querySelector<HTMLInputElement>("#script-file")!.click(),
+        false,
+        "upload",
+      ),
+  );
+}
+function scriptLabel() {
+  const button = document.querySelector<HTMLButtonElement>(
+    '[data-action="personal-script"]',
+  );
+  if (!button) return;
+  button.querySelector("span")!.textContent = personalScript?.active
+    ? "내 대본"
+    : "대본";
+  button.title = personalScript?.active ? personalScript.name : "내 메모 대본";
+}
+async function usePersonalScript(active: boolean) {
+  try {
+    if (personalScript) {
+      const next = { ...personalScript, active };
+      await scriptStore.write(next);
+      personalScript = next;
+    }
+    closePanel();
+    scriptLabel();
+    setMode(1);
+  } catch {
+    notify("대본 설정을 저장하지 못했어요 · 기기 공간을 확인해 주세요");
+  }
+}
+async function importPersonalScript(file: File) {
+  let nextPdf: Awaited<ReturnType<typeof openLocalPdf>> | undefined;
+  try {
+    notify("대본을 확인하는 중이에요");
+    nextPdf = await openLocalPdf(file, catalog.scriptPages);
+    const next = { name: file.name, blob: file, active: true };
+    await scriptStore.write(next);
+    const previous = personalPdf;
+    personalPdf = nextPdf;
+    personalScript = next;
+    closePanel();
+    scriptLabel();
+    setMode(1);
+    void previous?.dispose();
+    notify("내 대본 저장 완료 · 오프라인에서도 볼 수 있어요");
+  } catch (e) {
+    await nextPdf?.dispose();
+    notify(
+      (e as Error)?.name === "QuotaExceededError"
+        ? "저장 공간이 부족해요 · 기존 대본은 유지됩니다"
+        : (e as Error)?.message || "내 대본을 저장하지 못했어요",
+    );
+  }
 }
 function recordingMenu() {
   showPanel("음원 선택", () =>
@@ -735,6 +819,13 @@ function tools() {
         () => document.querySelector<HTMLInputElement>("#backup-file")!.click(),
         false,
         "upload",
+      ) +
+      row(
+        "내 메모 대본",
+        personalScript?.active ? personalScript.name : "필기한 PDF로 바꿔 보기",
+        personalScriptMenu,
+        false,
+        "edit",
       ) +
       row(
         "자료 다운로드",
@@ -965,6 +1056,9 @@ function bind() {
       case "download":
         void downloads();
         break;
+      case "personal-script":
+        personalScriptMenu();
+        break;
       case "suggest-later":
         dismissDownloadSuggestion();
         break;
@@ -1137,6 +1231,12 @@ function bind() {
     isSeeking = false;
     seek(Number((e.target as HTMLInputElement).value), true);
   });
+  document.querySelector("#script-file")!.addEventListener("change", (e) => {
+    const input = e.target as HTMLInputElement;
+    const file = input.files?.[0];
+    input.value = "";
+    if (file) void importPersonalScript(file);
+  });
   document
     .querySelector("#backup-file")!
     .addEventListener("change", async (e) => {
@@ -1248,6 +1348,20 @@ function mount() {
   suggestion.setAttribute("aria-label", "오프라인 연습 준비");
   suggestion.hidden = true;
   root.insertBefore(suggestion, root.querySelector(".workspace"));
+  const scriptName = root.querySelector(".script-document .document-name")!;
+  const personalButton = document.createElement("button");
+  personalButton.className = "document-name personal-script-button";
+  personalButton.dataset.action = "personal-script";
+  personalButton.setAttribute("aria-label", "내 메모 대본");
+  personalButton.innerHTML = `${svg("edit")}<span>대본</span>`;
+  scriptName.replaceWith(personalButton);
+  scriptLabel();
+  const fileInput = document.createElement("input");
+  fileInput.id = "script-file";
+  fileInput.type = "file";
+  fileInput.accept = ".pdf,application/pdf";
+  fileInput.hidden = true;
+  root.append(fileInput);
   root.querySelector<HTMLAnchorElement>(".brand")!.href = appBase.href;
   script = new Paper(document.querySelector("#script-paper")!);
   score.onTap = tapScore;
@@ -1287,7 +1401,21 @@ async function init() {
     );
     const mixes = await offline.json("mix-catalog.json");
     tracks = [...catalog.tracks, ...mixes.tracks];
+    let restoreError = false;
+    try {
+      personalScript = await scriptStore.read();
+      if (personalScript)
+        personalPdf = await openLocalPdf(
+          personalScript.blob,
+          catalog.scriptPages,
+        );
+    } catch {
+      personalScript = undefined;
+      restoreError = true;
+    }
     mount();
+    if (restoreError)
+      notify("저장한 내 대본을 열지 못했어요 · 원본을 표시합니다");
     await navigator.serviceWorker.register(new URL("sw.js", appBase), {
       scope: appBase.pathname,
     });
