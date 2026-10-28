@@ -69,12 +69,15 @@ export class Paper {
     dy: number;
     time: number;
     distance: number;
+    swipe: boolean;
+    key: string;
   };
   pinch?: { distance: number; zoom: number };
   lastTap = 0;
   tapTimer?: number;
   onPrimeTap = () => {};
   onTap = (x: number, y: number) => {};
+  onPage = (direction: -1 | 1) => {};
   constructor(root: HTMLElement) {
     this.viewport = root;
     root.innerHTML =
@@ -94,6 +97,8 @@ export class Paper {
           dy: this.dy,
           time: performance.now(),
           distance: 0,
+          swipe: this.zoom <= 1.01,
+          key: this.key,
         };
       else {
         clearTimeout(this.tapTimer);
@@ -102,7 +107,11 @@ export class Paper {
           distance: Math.hypot(a.x - b.x, a.y - b.y),
           zoom: this.zoom,
         };
-        if (this.down) this.down.distance = 100;
+        this.lastTap = 0;
+        if (this.down) {
+          this.down.distance = 100;
+          this.down.swipe = false;
+        }
       }
     });
     root.addEventListener("pointermove", (e) => {
@@ -123,6 +132,10 @@ export class Paper {
         const x = e.clientX - this.down.x,
           y = e.clientY - this.down.y;
         this.down.distance = Math.max(this.down.distance, Math.hypot(x, y));
+        if (this.down.distance >= 9) {
+          clearTimeout(this.tapTimer);
+          this.lastTap = 0;
+        }
         if (this.zoom > 1) {
           this.dx = this.down.dx + x;
           this.dy = this.down.dy + y;
@@ -131,9 +144,30 @@ export class Paper {
       }
     });
     const end = (e: PointerEvent) => {
+      if (!this.pointers.has(e.pointerId)) return;
       this.pointers.delete(e.pointerId);
+      const down = this.down;
+      const x = down ? e.clientX - down.x : 0;
+      const y = down ? e.clientY - down.y : 0;
+      if (down) down.distance = Math.max(down.distance, Math.hypot(x, y));
+      const swipeDistance = Math.max(
+        40,
+        Math.min(90, this.viewport.clientWidth * 0.15),
+      );
       if (
+        down?.swipe &&
+        down.key === this.key &&
+        this.pointers.size === 0 &&
+        this.zoom <= 1.01 &&
+        Math.abs(x) >= swipeDistance &&
+        Math.abs(x) > Math.abs(y) * 1.5
+      ) {
+        clearTimeout(this.tapTimer);
+        this.lastTap = 0;
+        this.onPage(x < 0 ? 1 : -1);
+      } else if (
         this.down &&
+        this.down.key === this.key &&
         this.pointers.size === 0 &&
         this.down.distance < 9 &&
         performance.now() - this.down.time < 500
@@ -163,6 +197,8 @@ export class Paper {
     };
     root.addEventListener("pointerup", end);
     root.addEventListener("pointercancel", () => {
+      clearTimeout(this.tapTimer);
+      this.lastTap = 0;
       this.pointers.clear();
       this.down = undefined;
       this.pinch = undefined;

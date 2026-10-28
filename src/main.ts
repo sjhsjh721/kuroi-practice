@@ -471,9 +471,12 @@ function transport() {
   )!;
   b.innerHTML = svg(audio.paused ? "play" : "pause");
   b.setAttribute("aria-label", audio.paused ? "재생" : "일시정지");
-  document
-    .querySelector('[data-action="follow"]')!
-    .classList.toggle("active", follow);
+  const followButton = document.querySelector<HTMLButtonElement>(
+    '[data-action="follow"]',
+  )!;
+  followButton.classList.toggle("active", follow);
+  followButton.setAttribute("aria-pressed", String(follow));
+  followButton.title = follow ? "수동 넘김으로 전환" : "음원에 맞춰 자동 넘김";
   document.querySelector("#follow-label")!.textContent = follow
     ? "자동"
     : "수동";
@@ -550,9 +553,12 @@ function showPanel(title: string, content: () => string) {
   document.querySelector<HTMLElement>("#chrome")!.inert = true;
   document.querySelector<HTMLElement>("#transport")!.inert = true;
   document.querySelector<HTMLElement>("#download-suggestion")!.inert = true;
-  requestAnimationFrame(() =>
-    overlay.querySelector<HTMLElement>("button,input")?.focus(),
-  );
+  requestAnimationFrame(() => {
+    if (!overlay.hidden && !overlay.contains(document.activeElement))
+      overlay
+        .querySelector<HTMLElement>("button,input")
+        ?.focus({ preventScroll: true });
+  });
 }
 function closePanel() {
   document.querySelector<HTMLElement>("#overlay")!.hidden = true;
@@ -1210,8 +1216,8 @@ function bind() {
         void toggleFullscreen();
         break;
       case "follow":
-        follow = true;
-        applyCue();
+        follow = !follow;
+        if (follow) applyCue();
         transport();
         break;
       case "rate":
@@ -1499,6 +1505,8 @@ function mount() {
   root.append(fileInput);
   root.querySelector<HTMLAnchorElement>(".brand")!.href = appBase.href;
   script = new Paper(document.querySelector("#script-paper")!);
+  score.onPage = (direction) => manualPage("score", scorePage + direction);
+  script.onPage = (direction) => manualPage("script", scriptPage + direction);
   score.onTap = tapScore;
   score.onPrimeTap = () => {
     try {
