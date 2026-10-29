@@ -36,6 +36,7 @@ test("held mouse clicks start and pause MR online and from verified offline down
   // Start on a controlled app-shell navigation, after first SW activation.
   await page.reload();
   await page.waitForFunction(() => (window as any).kuroiAudit?.state.ready);
+  await page.waitForLoadState("networkidle");
   await playAndPause(page, 100);
   await playAndPause(page, 200);
   if (info.project.name === "comet-desktop") {
