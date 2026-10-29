@@ -469,8 +469,13 @@ function transport() {
   const b = document.querySelector<HTMLButtonElement>(
     '[data-action="toggle"]',
   )!;
-  b.innerHTML = svg(audio.paused ? "play" : "pause");
-  b.setAttribute("aria-label", audio.paused ? "재생" : "일시정지");
+  const playLabel = audio.paused ? "재생" : "일시정지";
+  // Preserve the pressed SVG until click completes. Replacing it on each clock
+  // tick removes the pointer-down target and Chromium drops a held mouse click.
+  if (b.getAttribute("aria-label") !== playLabel) {
+    b.innerHTML = svg(audio.paused ? "play" : "pause");
+    b.setAttribute("aria-label", playLabel);
+  }
   const followButton = document.querySelector<HTMLButtonElement>(
     '[data-action="follow"]',
   )!;

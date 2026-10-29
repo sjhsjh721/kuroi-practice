@@ -15,6 +15,21 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   projects: [
+    ...(process.env.PWA_COMET_EXECUTABLE
+      ? [
+          {
+            name: "comet-desktop",
+            testMatch: "play-click.spec.ts",
+            use: {
+              viewport: { width: 1280, height: 900 },
+              browserName: "chromium" as const,
+              launchOptions: {
+                executablePath: process.env.PWA_COMET_EXECUTABLE,
+              },
+            },
+          },
+        ]
+      : []),
     {
       name: "webkit-ipad",
       use: { ...devices["iPad Pro 11"], browserName: "webkit" },
