@@ -19,7 +19,7 @@ export default defineConfig({
       ? [
           {
             name: "comet-desktop",
-            testMatch: "play-click.spec.ts",
+            testMatch: ["play-click.spec.ts", "lines.spec.ts"],
             use: {
               viewport: { width: 1280, height: 900 },
               browserName: "chromium" as const,

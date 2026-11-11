@@ -1,0 +1,3724 @@
+{
+  "version": 1,
+  "role": "선관",
+  "characters": [
+    "선관귀신",
+    "무당",
+    "아저씨(배수환)",
+    "사이토 백작"
+  ],
+  "sourceSha256": "c2737efad11b4ff8e633b0caef874099a7fd5b9be4a7b2a4dafbcd5e82551786",
+  "ownershipSha256": "3af076e2546e067f0518492f5f0bdf4ab0f3c20d321e6250a491b628cc9cd8e7",
+  "ownedRegions": 328,
+  "scenes": [
+    {
+      "id": "scene-1",
+      "number": 1,
+      "title": "쿠로이 저택엔 귀신이 산다",
+      "page": 3,
+      "count": 24
+    },
+    {
+      "id": "scene-2",
+      "number": 2,
+      "title": "언덕 위에 무덤가",
+      "page": 11,
+      "count": 0
+    },
+    {
+      "id": "scene-3",
+      "number": 3,
+      "title": "쿠로이 저택에 찾아온 퇴마사",
+      "page": 14,
+      "count": 26
+    },
+    {
+      "id": "scene-4",
+      "number": 4,
+      "title": "옥희의 기억",
+      "page": 28,
+      "count": 30
+    },
+    {
+      "id": "scene-5",
+      "number": 5,
+      "title": "귀신의 꿈",
+      "page": 32,
+      "count": 24
+    },
+    {
+      "id": "scene-6",
+      "number": 6,
+      "title": "모든 기계의 원리는 비슷",
+      "page": 38,
+      "count": 0
+    },
+    {
+      "id": "scene-7",
+      "number": 7,
+      "title": "아주 오랫동안 기다려왔어",
+      "page": 40,
+      "count": 5
+    },
+    {
+      "id": "scene-8",
+      "number": 8,
+      "title": "성불하자",
+      "page": 42,
+      "count": 12
+    },
+    {
+      "id": "scene-9",
+      "number": 9,
+      "title": "될 일이 안 될 일에게",
+      "page": 44,
+      "count": 0
+    },
+    {
+      "id": "scene-10",
+      "number": 10,
+      "title": "다롱디리다",
+      "page": 48,
+      "count": 20
+    },
+    {
+      "id": "scene-11",
+      "number": 11,
+      "title": "요시다의 기억",
+      "page": 58,
+      "count": 24
+    },
+    {
+      "id": "scene-12",
+      "number": 12,
+      "title": "막연한 믿음",
+      "page": 64,
+      "count": 36
+    },
+    {
+      "id": "scene-13",
+      "number": 13,
+      "title": "쿠로이 저택엔 누가 살았을까?",
+      "page": 76,
+      "count": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "p3-y165.67-2",
+      "sceneId": "scene-1",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 1,
+      "answer": "까맣게 타버린 절벽 위 검은 집\n여긴 쿠로이 여긴 쿠로이\n달이 뜬 밤이면 귀신들 모이네",
+      "directions": [],
+      "cueSpeaker": "장면 시작",
+      "cue": "",
+      "pages": [
+        3
+      ],
+      "regionIds": [
+        "2:0",
+        "2:2",
+        "2:3"
+      ]
+    },
+    {
+      "id": "p3-y295.26-2",
+      "sceneId": "scene-1",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 1,
+      "answer": "선관",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "장군귀신",
+      "pages": [
+        3
+      ],
+      "regionIds": [
+        "2:9"
+      ]
+    },
+    {
+      "id": "p3-y369.35-2",
+      "sceneId": "scene-1",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 1,
+      "answer": "그리고 여기 집주인",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "아기귀신",
+      "pages": [
+        3
+      ],
+      "regionIds": [
+        "2:13"
+      ]
+    },
+    {
+      "id": "p3-y406.40-2",
+      "sceneId": "scene-1",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 1,
+      "answer": "까맣게 타버린 절벽 위 검은 집\n여긴 쿠로이 여긴 쿠로이\n달이 뜬 밤이면 귀신들 모이네\n여긴 쿠로이 여긴 쿠로이\n한 맺힌 귀신들 풀어줄 사람을\n기다려 기다려 기다려\n기다려 기다려 기다려",
+      "directions": [],
+      "cueSpeaker": "귀신들",
+      "cue": "그리고 여기 집주인",
+      "pages": [
+        3
+      ],
+      "regionIds": [
+        "2:14",
+        "2:16",
+        "2:17",
+        "2:18",
+        "2:19",
+        "2:20",
+        "2:21"
+      ]
+    },
+    {
+      "id": "p4-y167.66-3",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "대사",
+      "song": null,
+      "answer": "오호 아주 가득하구만.",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "흥, 있긴 뭐가 있다고 아무것도 없구만. 안 들어오고 뭐 해요!",
+      "pages": [
+        4
+      ],
+      "regionIds": [
+        "3:3"
+      ]
+    },
+    {
+      "id": "p4-y278.80-3",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "대사",
+      "song": null,
+      "answer": "계십니까. 저는 저쪽에서 치송을 좀 하겠습니다.",
+      "directions": [
+        "넘어지지 않은 척"
+      ],
+      "cueSpeaker": "가네코",
+      "cue": "저런, 아프겠는데?",
+      "pages": [
+        4
+      ],
+      "regionIds": [
+        "3:7"
+      ]
+    },
+    {
+      "id": "p4-y538.12-3",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "대사",
+      "song": null,
+      "answer": "들어와! 빨리 들어와! 이 자식들! 내가 누군줄 알아?\n내가 그 방울도사야 이 짜식들아!",
+      "directions": [
+        "뛰며"
+      ],
+      "cueSpeaker": "가네코",
+      "cue": "자, 다들 똑똑히 보세요. 아무것도 없죠? 아무것도.",
+      "pages": [
+        4
+      ],
+      "regionIds": [
+        "3:19",
+        "3:20"
+      ]
+    },
+    {
+      "id": "p6-y664.99-4",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "진정하십쇼.",
+      "directions": [],
+      "cueSpeaker": "요시다",
+      "cue": "방울보살님 여기 한번 봐주세요.",
+      "pages": [
+        6
+      ],
+      "regionIds": [
+        "5:29"
+      ]
+    },
+    {
+      "id": "p8-y642.49-4",
+      "sceneId": "scene-1",
+      "speaker": "요시다,소장,무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "도대체 뭘까 그녀를 막아선 저건\n도대체 뭘까 그녀를 밀어내는 저건\n보이지 않아도 들리지 않아도",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "내 풍금 만지지 마!",
+      "pages": [
+        8
+      ],
+      "regionIds": [
+        "7:32",
+        "7:34",
+        "7:35"
+      ]
+    },
+    {
+      "id": "p9-y130.61-4",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "저건",
+      "directions": [],
+      "cueSpeaker": "소장",
+      "cue": "있는",
+      "pages": [
+        9
+      ],
+      "regionIds": [
+        "8:3"
+      ]
+    },
+    {
+      "id": "p9-y167.66-4",
+      "sceneId": "scene-1",
+      "speaker": "요시다,소장,무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "도대체 뭘까",
+      "directions": [],
+      "cueSpeaker": "무당",
+      "cue": "저건",
+      "pages": [
+        9
+      ],
+      "regionIds": [
+        "8:5"
+      ]
+    },
+    {
+      "id": "p9-y389.94-4",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "이럴수가! 드디어 느껴집니다.\n역시 여기 뭔가가 있어요.\n그녀의 머리끝에 뭔가가 있어요.\n가슴 속에 한을 품고\n아주 오랫동안 누군갈 기다려왔죠",
+      "directions": [],
+      "cueSpeaker": "요시다",
+      "cue": "직접 잡고 계신데요?",
+      "pages": [
+        9
+      ],
+      "regionIds": [
+        "8:16",
+        "8:18",
+        "8:19",
+        "8:20",
+        "8:21"
+      ]
+    },
+    {
+      "id": "p9-y481.72-4",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "당신 내 목소리 들리나요\n당신 이제 말해 봐요\n품어왔던 이야기를\n내게 말해주세요\n당신의 한을\n혼자만 죽은 외로움\n연애 한 번 못하고 죽은\n귀신님의 아픈 사연\n내가 다 들어줄게요 총각귀신님 총각귀신님",
+      "directions": [],
+      "cueSpeaker": "무당",
+      "cue": "이럴수가! 드디어 느껴집니다.\n역시 여기 뭔가가 있어요.\n그녀의 머리끝에 뭔가가 있어요.\n가슴 속에 한을 품고\n아주 오랫동안 누군갈 기다려왔죠",
+      "pages": [
+        9
+      ],
+      "regionIds": [
+        "8:23",
+        "8:25",
+        "8:28",
+        "8:30",
+        "8:32",
+        "8:34",
+        "8:36",
+        "8:37",
+        "8:38"
+      ]
+    },
+    {
+      "id": "p9-y629.13-4",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "여기 기골이 장대하시고, 풍채가 위풍당당하신! 총각귀신님이 여기 계십니다!\n모두 절 하세요.",
+      "directions": [],
+      "cueSpeaker": "무당",
+      "cue": "당신 내 목소리 들리나요\n당신 내가 보이나요\n당신 이제 말해 봐요\n이제 말할게요\n품어왔던 이야기를\n모두 다\n내게 말해주세요\n말할게요\n당신의 한을\n전부\n혼자만 죽은 외로움\n외로움\n연애 한 번 못하고 죽은\n귀신님의 아픈 사연\n내가 다 들어줄게요 총각귀신님 총각귀신님",
+      "pages": [
+        9
+      ],
+      "regionIds": [
+        "8:40",
+        "8:41"
+      ]
+    },
+    {
+      "id": "p9-y674.72-4",
+      "sceneId": "scene-1",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 2,
+      "answer": "여기 뭔가 있어 우리는 볼 수 없는\n여기 뭔가 있어 우리는 알 수 없는",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "다 나가!\n여기 내가 있어\n쿠로이에 내가 있어",
+      "pages": [
+        9
+      ],
+      "regionIds": [
+        "8:45",
+        "8:48"
+      ]
+    },
+    {
+      "id": "p10-y93.57-4",
+      "sceneId": "scene-1",
+      "speaker": "요시다,소장,무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "뭔가",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "다 나가!\n여기 내가 있어\n여기 뭔가 있어 우리는 볼 수 없는\n쿠로이에 내가 있어\n여기 뭔가 있어 우리는 알 수 없는",
+      "pages": [
+        10
+      ],
+      "regionIds": [
+        "9:1"
+      ]
+    },
+    {
+      "id": "p10-y204.71-4",
+      "sceneId": "scene-1",
+      "speaker": "요시다,소장,무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "뭔가",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "우릴 괴롭히는",
+      "pages": [
+        10
+      ],
+      "regionIds": [
+        "9:7"
+      ]
+    },
+    {
+      "id": "p10-y352.89-4",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "뭔가",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "여기 내가",
+      "pages": [
+        10
+      ],
+      "regionIds": [
+        "9:15"
+      ]
+    },
+    {
+      "id": "p10-y458.03-4",
+      "sceneId": "scene-1",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 2,
+      "answer": "여기 뭔가 있어 들을 수 없는\n여기 뭔가 있어 만질 수 없는",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "여기 내가 있어\n여기 내가 있어",
+      "pages": [
+        10
+      ],
+      "regionIds": [
+        "9:22",
+        "9:25"
+      ]
+    },
+    {
+      "id": "p10-y515.62-4",
+      "sceneId": "scene-1",
+      "speaker": "요시다,소장,무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "뭔가",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "여기 내가 있어\n여기 뭔가 있어 들을 수 없는\n여기 내가 있어\n여기 뭔가 있어 만질 수 없는",
+      "pages": [
+        10
+      ],
+      "regionIds": [
+        "9:27"
+      ]
+    },
+    {
+      "id": "p10-y626.76-4",
+      "sceneId": "scene-1",
+      "speaker": "요시다,소장,무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "뭔가",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "우릴 괴롭히는",
+      "pages": [
+        10
+      ],
+      "regionIds": [
+        "9:33"
+      ]
+    },
+    {
+      "id": "p11-y130.61-4",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "뭔가",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "여기 내가",
+      "pages": [
+        11
+      ],
+      "regionIds": [
+        "10:3"
+      ]
+    },
+    {
+      "id": "p11-y241.75-4",
+      "sceneId": "scene-1",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 2,
+      "answer": "있어",
+      "directions": [],
+      "cueSpeaker": "요시다,소장",
+      "cue": "뭔가",
+      "pages": [
+        11
+      ],
+      "regionIds": [
+        "10:9"
+      ]
+    },
+    {
+      "id": "p11-y278.80-4",
+      "sceneId": "scene-1",
+      "speaker": "무당",
+      "kind": "가사",
+      "song": 2,
+      "answer": "죄송합니다. 저로서는 도저히 상대가 안 됩니다.",
+      "directions": [],
+      "cueSpeaker": "다같이",
+      "cue": "있어",
+      "pages": [
+        11
+      ],
+      "regionIds": [
+        "10:11"
+      ]
+    },
+    {
+      "id": "p14-y432.43-9",
+      "sceneId": "scene-3",
+      "speaker": "귀신들",
+      "kind": "행동",
+      "song": null,
+      "answer": "(웃음소리)",
+      "directions": [],
+      "cueSpeaker": "장면 시작",
+      "cue": "",
+      "pages": [
+        14
+      ],
+      "regionIds": [
+        "13:5"
+      ]
+    },
+    {
+      "id": "p14-y580.62-9",
+      "sceneId": "scene-3",
+      "speaker": "귀신들",
+      "kind": "대사",
+      "song": null,
+      "answer": "정말?",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "얘, 내 말에 대답을 했어.",
+      "pages": [
+        14
+      ],
+      "regionIds": [
+        "13:13"
+      ]
+    },
+    {
+      "id": "p15-y130.61-9",
+      "sceneId": "scene-3",
+      "speaker": "귀신들",
+      "kind": "대사",
+      "song": null,
+      "answer": "살았다. 살았어.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "저 박해영 아닙니다..",
+      "pages": [
+        15
+      ],
+      "regionIds": [
+        "14:3"
+      ]
+    },
+    {
+      "id": "p15-y426.98-9",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "보통은.. 먼저 들러붙는 사람이 임자지!",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "그런 법이 없어?",
+      "pages": [
+        15
+      ],
+      "regionIds": [
+        "14:17"
+      ]
+    },
+    {
+      "id": "p15-y604.26-9",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "근데 집 주인 진짜 대답한 거 맞아?",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "얌전히 있을게요, 언니.",
+      "pages": [
+        15
+      ],
+      "regionIds": [
+        "14:25"
+      ]
+    },
+    {
+      "id": "p15-y678.35-9",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "그럼 계획은 있어?",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "어, 내 목소리를 들었다니까!",
+      "pages": [
+        15
+      ],
+      "regionIds": [
+        "14:29"
+      ]
+    },
+    {
+      "id": "p16-y219.25-9",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "대화까지 가능한 건 천 년에 한 번 있을까 말까 한 건데 말이야.",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "그 사람 얘기 하지마.",
+      "pages": [
+        16
+      ],
+      "regionIds": [
+        "15:8"
+      ]
+    },
+    {
+      "id": "p16-y367.44-9",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "게다가 집 주인. 넌 지박령이잖아.",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "정말 나빴어. 흥.",
+      "pages": [
+        16
+      ],
+      "regionIds": [
+        "15:16"
+      ]
+    },
+    {
+      "id": "p16-y441.53-9",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "한번 도망가면 끝인 거야.",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "밖에 못 나가잖아.",
+      "pages": [
+        16
+      ],
+      "regionIds": [
+        "15:20"
+      ]
+    },
+    {
+      "id": "p17-y93.57-10",
+      "sceneId": "scene-3",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 4,
+      "answer": "???",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "잠깐! 나는 달라. 나는 귀엽잖아!",
+      "pages": [
+        17
+      ],
+      "regionIds": [
+        "16:1"
+      ]
+    },
+    {
+      "id": "p17-y252.85-10",
+      "sceneId": "scene-3",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 4,
+      "answer": "묶어\n묶어\n묶어\n묶어",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "일단 묶어\n묶어\n묶어 묶고 나면 뭐든 생각나겠지\n일단 묶어\n묶어",
+      "pages": [
+        17
+      ],
+      "regionIds": [
+        "16:10",
+        "16:12",
+        "16:16",
+        "16:18"
+      ]
+    },
+    {
+      "id": "p17-y312.98-10",
+      "sceneId": "scene-3",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 4,
+      "answer": "그럼 혼자 도망은 못 갈 거야",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "일단 묶어\n묶어\n묶어\n묶어\n묶어 묶고 나면 뭐든 생각나겠지\n일단 묶어\n묶어\n묶어\n묶어",
+      "pages": [
+        17
+      ],
+      "regionIds": [
+        "16:20"
+      ]
+    },
+    {
+      "id": "p17-y529.85-10",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 4,
+      "answer": "야, 처녀귀신! 그 뒤에 숨긴 거 뭐야!",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "안 돼!\n어쩌지 이렇게는 안 될 거야\n붙잡아놓는 것 보단\n서로 대화할 수 있는 게 중요해",
+      "pages": [
+        17
+      ],
+      "regionIds": [
+        "16:33"
+      ]
+    },
+    {
+      "id": "p17-y678.04-10",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 4,
+      "answer": "집주인, 그거야. 훔치는 거야! 물건을 훔쳐서 동등한 입장에서 거래를 하는 거지.",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "아니야.",
+      "pages": [
+        17
+      ],
+      "regionIds": [
+        "16:41"
+      ]
+    },
+    {
+      "id": "p18-y219.25-10",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 4,
+      "answer": "가방도 좋아 보여",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "중요한거?\n저거 아닐까 손에 딱 걸려 있는 거",
+      "pages": [
+        18
+      ],
+      "regionIds": [
+        "17:8"
+      ]
+    },
+    {
+      "id": "p18-y330.39-10",
+      "sceneId": "scene-3",
+      "speaker": "옥희,선관,아기,처녀",
+      "kind": "가사",
+      "song": 4,
+      "answer": "야! 아 모르겠다",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "목숨도",
+      "pages": [
+        18
+      ],
+      "regionIds": [
+        "17:14"
+      ]
+    },
+    {
+      "id": "p18-y413.03-10",
+      "sceneId": "scene-3",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 4,
+      "answer": "벗겨\n벗겨\n훔쳐\n훔쳐",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "모르겠으면 일단 벗겨\n벗겨\n벗겨 벗기고 나면 알겠지\n뭐든 훔쳐\n훔쳐\n전부 훔치면 하난 나올 거야",
+      "pages": [
+        18
+      ],
+      "regionIds": [
+        "17:20",
+        "17:22",
+        "17:26",
+        "17:28"
+      ]
+    },
+    {
+      "id": "p18-y487.72-10",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 4,
+      "answer": "늘 함께 걸었던 이 신발",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "모르겠으면 일단 벗겨\n벗겨\n벗겨\n벗겨\n벗겨 벗기고 나면 알겠지\n뭐든 훔쳐\n훔쳐\n훔쳐\n훔쳐\n전부 훔치면 하난 나올 거야",
+      "pages": [
+        18
+      ],
+      "regionIds": [
+        "17:31"
+      ]
+    },
+    {
+      "id": "p18-y598.85-10",
+      "sceneId": "scene-3",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 4,
+      "answer": "다 숨겨",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "여기 있는 모자까지",
+      "pages": [
+        18
+      ],
+      "regionIds": [
+        "17:37"
+      ]
+    },
+    {
+      "id": "p18-y672.95-10",
+      "sceneId": "scene-3",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 4,
+      "answer": "우리 소원을 들어줄 물건 하나 걸려라",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "이 중 하난 걸리겠지",
+      "pages": [
+        18
+      ],
+      "regionIds": [
+        "17:41"
+      ]
+    },
+    {
+      "id": "p19-y130.61-10",
+      "sceneId": "scene-3",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 4,
+      "answer": "훔쳐 벗겨 뺏어 가져 숨겨 전부",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "내 소원 들어줄거야",
+      "pages": [
+        19
+      ],
+      "regionIds": [
+        "18:3"
+      ]
+    },
+    {
+      "id": "p19-y167.66-10",
+      "sceneId": "scene-3",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 4,
+      "answer": "벗겨",
+      "directions": [],
+      "cueSpeaker": "귀신들",
+      "cue": "훔쳐 벗겨 뺏어 가져 숨겨 전부",
+      "pages": [
+        19
+      ],
+      "regionIds": [
+        "18:5"
+      ]
+    },
+    {
+      "id": "p19-y241.75-11",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "자, 다 숨겨!",
+      "directions": [],
+      "cueSpeaker": "다같이",
+      "cue": "벗겨",
+      "pages": [
+        19
+      ],
+      "regionIds": [
+        "18:7"
+      ]
+    },
+    {
+      "id": "p19-y315.85-11",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "야이 정신나간 귀신아! 그만 벗겨!",
+      "directions": [],
+      "cueSpeaker": "선관",
+      "cue": "자, 다 숨겨!",
+      "pages": [
+        19
+      ],
+      "regionIds": [
+        "18:9"
+      ]
+    },
+    {
+      "id": "p19-y389.94-11",
+      "sceneId": "scene-3",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "중요한 것만 벗겨.",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "왜? 다 벗기는 거 아니었어?",
+      "pages": [
+        19
+      ],
+      "regionIds": [
+        "18:13"
+      ]
+    },
+    {
+      "id": "p19-y464.03-11",
+      "sceneId": "scene-3",
+      "speaker": "귀신들",
+      "kind": "대사",
+      "song": null,
+      "answer": "아니야!",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "옷이 제일 중요한 거 아니야?",
+      "pages": [
+        19
+      ],
+      "regionIds": [
+        "18:17"
+      ]
+    },
+    {
+      "id": "p28-y202.71-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "알겠소. 근데 저 아이는?",
+      "directions": [],
+      "cueSpeaker": "박해영",
+      "cue": "여기 말씀드렸던 증서입니다. 분위기가 잠잠해지면 찾으러 오겠습니다.",
+      "pages": [
+        28
+      ],
+      "regionIds": [
+        "27:3"
+      ]
+    },
+    {
+      "id": "p28-y305.90-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "배수환이요. 잘 부탁하오. 아이도 증서도 잘 맡아 두겠소.",
+      "directions": [],
+      "cueSpeaker": "박해영",
+      "cue": "이 일로 부모를 모두 잃은 아이입니다. 마땅히 맡길 곳이 없어 선생님께 부탁을 좀\n드리겠습니다. 빠른 시일내에 일가 친척을 찾아보겠습니다. 아 저는 당분간 이\n일을 맡은 동의회 박해영이라고 합니다.",
+      "pages": [
+        28
+      ],
+      "regionIds": [
+        "27:9"
+      ]
+    },
+    {
+      "id": "p28-y417.04-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "안녕? 옥희라고 했지? 아저씨는 배수환이라고 해. 만나서 반갑다.",
+      "directions": [],
+      "cueSpeaker": "박해영",
+      "cue": "고맙습니다.",
+      "pages": [
+        28
+      ],
+      "regionIds": [
+        "27:13"
+      ]
+    },
+    {
+      "id": "p28-y491.13-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "뭐 재밌는 게 없나? 옥희가 재밌어할 만한 뭔가.. 짜잔. 이 시계 옥희\n아빠거랑 똑같지? 아저씨는 옥희 아빠랑 먼 친구 사이야. 그러니까 우리도 한번\n잘 지내보자.",
+      "directions": [
+        "무안한듯"
+      ],
+      "cueSpeaker": "아저씨",
+      "cue": "안녕? 옥희라고 했지? 아저씨는 배수환이라고 해. 만나서 반갑다.",
+      "pages": [
+        28
+      ],
+      "regionIds": [
+        "27:15",
+        "27:16",
+        "27:17"
+      ]
+    },
+    {
+      "id": "p28-y594.31-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "그래. 이렇게 서로 없는 셈 치고 지내는 것도 나쁘지 않지. 근데 당분간 여기서\n지내야 하니까 우리집이다 생각하고 편하게 있어. 아저씨도 옥희 편하게\n생각할게.",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "뭐 재밌는 게 없나? 옥희가 재밌어할 만한 뭔가.. 짜잔. 이 시계 옥희\n아빠거랑 똑같지? 아저씨는 옥희 아빠랑 먼 친구 사이야. 그러니까 우리도 한번\n잘 지내보자.",
+      "pages": [
+        28
+      ],
+      "regionIds": [
+        "27:19",
+        "27:20",
+        "27:21"
+      ]
+    },
+    {
+      "id": "p28-y697.50-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "응?",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "여기 우리 집 아닌데..",
+      "pages": [
+        28
+      ],
+      "regionIds": [
+        "27:25"
+      ]
+    },
+    {
+      "id": "p29-y130.61-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "물론 아니지. 그냥 그렇게 생각을 하자는 거지.",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "여기 우리 집 아니라고요.",
+      "pages": [
+        29
+      ],
+      "regionIds": [
+        "28:3"
+      ]
+    },
+    {
+      "id": "p29-y270.85-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "그래. 옥희 집은 이제 아예 없지..",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "어떻게 그렇게 생각해요? 여긴 화분도 없고, 엄마가 닦던 반짝거리던 찻잔도\n없고, 서재도 없고, 내 방도 없고, 엄마도 없고, 아빠도 없고.. 아무도 없는데..\n아무도 없어요.",
+      "pages": [
+        29
+      ],
+      "regionIds": [
+        "28:9"
+      ]
+    },
+    {
+      "id": "p29-y381.98-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "아니! 그러니까 내 말은 여기에도 뭔가 비슷한 게 있을 거야! 그렇지! 여기 짜잔\n더덕주!",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "?! 아예 없다고요?",
+      "pages": [
+        29
+      ],
+      "regionIds": [
+        "28:13",
+        "28:14"
+      ]
+    },
+    {
+      "id": "p29-y470.62-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "미안! 옥희야 너네 집에 풍금은 있었지?",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "으악! 무서워! 이런 거 안 먹어요!",
+      "pages": [
+        29
+      ],
+      "regionIds": [
+        "28:18"
+      ]
+    },
+    {
+      "id": "p29-y544.72-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "없었구나. 이거 치워버려야겠다.",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "없었어요.",
+      "pages": [
+        29
+      ],
+      "regionIds": [
+        "28:22"
+      ]
+    },
+    {
+      "id": "p29-y633.35-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "옥희, 풍금소리 처음 듣는구나? 이게 풍금이라는 거야. 여기 건반을 누르면\n이렇게 소리가 나.  신기하지? 옥희야 여기 한번 앉아볼래?",
+      "directions": [
+        "풍금소리 se"
+      ],
+      "cueSpeaker": "아저씨",
+      "cue": "없었구나. 이거 치워버려야겠다.",
+      "pages": [
+        29
+      ],
+      "regionIds": [
+        "28:24",
+        "28:25"
+      ]
+    },
+    {
+      "id": "p30-y93.57-16",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "그래, 거기도 좋겠다. 자 그럼, 이제 눈을 감고 상상을 해보는 거야.",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "옥희, 풍금소리 처음 듣는구나? 이게 풍금이라는 거야. 여기 건반을 누르면\n이렇게 소리가 나.  신기하지? 옥희야 여기 한번 앉아볼래?",
+      "pages": [
+        30
+      ],
+      "regionIds": [
+        "29:1"
+      ]
+    },
+    {
+      "id": "p30-y204.71-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "반짝반짝 빛나는 엄마의 찻잔\n책 냄새 가득하던 아빠의 서재\n하루하루 커가는 꽃 화분\n햇살 가득했던 너의 방",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "무슨 상상이요?",
+      "pages": [
+        30
+      ],
+      "regionIds": [
+        "29:4",
+        "29:6",
+        "29:7",
+        "29:8"
+      ]
+    },
+    {
+      "id": "p30-y285.39-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "어때, 이런 느낌인가?",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "반짝반짝 빛나는 엄마의 찻잔\n책 냄새 가득하던 아빠의 서재\n하루하루 커가는 꽃 화분\n햇살 가득했던 너의 방",
+      "pages": [
+        30
+      ],
+      "regionIds": [
+        "29:10"
+      ]
+    },
+    {
+      "id": "p30-y359.48-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "풍금 소리를 타고\n흐르는 우리의 상상\n모든 것이 상상한 그대로\n이뤄지는 노래\n풍금 소리를 타고\n가득 찬 우리의 공간\n볼 순 없어도 만질 순 없어도\n풍금 소리가 만드는 기분 좋은 환상",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "어때, 이런 느낌인가?",
+      "pages": [
+        30
+      ],
+      "regionIds": [
+        "29:11",
+        "29:13",
+        "29:14",
+        "29:15",
+        "29:16",
+        "29:17",
+        "29:18",
+        "29:19"
+      ]
+    },
+    {
+      "id": "p30-y498.35-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "옥희, 이제 아저씨랑 옥희 방 보러갈까?",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "풍금 소리를 타고\n흐르는 우리의 상상\n모든 것이 상상한 그대로\n이뤄지는 노래\n풍금 소리를 타고\n가득 찬 우리의 공간\n볼 순 없어도 만질 순 없어도\n풍금 소리가 만드는 기분 좋은 환상",
+      "pages": [
+        30
+      ],
+      "regionIds": [
+        "29:21"
+      ]
+    },
+    {
+      "id": "p30-y572.45-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "여기가 이제 옥희 방이야. 파란색으로 가득한 방을 상상해봐.",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "옥희, 이제 아저씨랑 옥희 방 보러갈까?",
+      "pages": [
+        30
+      ],
+      "regionIds": [
+        "29:23"
+      ]
+    },
+    {
+      "id": "p30-y646.54-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "까망색..?",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "까망색이었어요!",
+      "pages": [
+        30
+      ],
+      "regionIds": [
+        "29:27"
+      ]
+    },
+    {
+      "id": "p30-y677.59-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "까만색으로 가득한 방을 상상해봐\n여기 의자는\n침대는\n책상은\n탁자도 거울도",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "까망색..?",
+      "pages": [
+        30,
+        31
+      ],
+      "regionIds": [
+        "29:29",
+        "29:30",
+        "29:33",
+        "30:0",
+        "30:2"
+      ]
+    },
+    {
+      "id": "p31-y145.16-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "우와..! 여기 다 까망이면 너무 예쁘겠다 그치?",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "까만색으로 가득한 방을 상상해봐\n여기 의자는\n예쁜 까망\n침대는\n까망\n책상은\n까망\n탁자도 거울도\n까망",
+      "pages": [
+        31
+      ],
+      "regionIds": [
+        "30:5"
+      ]
+    },
+    {
+      "id": "p31-y176.21-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "여긴 전부 다 까망",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "우와..! 여기 다 까망이면 너무 예쁘겠다 그치?",
+      "pages": [
+        31
+      ],
+      "regionIds": [
+        "30:7"
+      ]
+    },
+    {
+      "id": "p31-y233.80-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨,옥희",
+      "kind": "가사",
+      "song": 7,
+      "answer": "풍금 소리를 타고\n흐르는 우리의 상상",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "여긴 전부 다 까망\n예쁜 까망 까망 까망",
+      "pages": [
+        31
+      ],
+      "regionIds": [
+        "30:10",
+        "30:12"
+      ]
+    },
+    {
+      "id": "p31-y374.03-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "옥희야!",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "모든 것이 노래하는 그대로\n이뤄지는 소리",
+      "pages": [
+        31
+      ],
+      "regionIds": [
+        "30:17"
+      ]
+    },
+    {
+      "id": "p31-y411.08-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨,옥희",
+      "kind": "가사",
+      "song": 7,
+      "answer": "풍금 소리를 타고\n스며든 우리의 바람",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "옥희야!",
+      "pages": [
+        31
+      ],
+      "regionIds": [
+        "30:18",
+        "30:20"
+      ]
+    },
+    {
+      "id": "p31-y462.67-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 7,
+      "answer": "볼 순 없어도",
+      "directions": [],
+      "cueSpeaker": "아저씨,옥희",
+      "cue": "풍금 소리를 타고\n스며든 우리의 바람",
+      "pages": [
+        31
+      ],
+      "regionIds": [
+        "30:22"
+      ]
+    },
+    {
+      "id": "p31-y536.76-17",
+      "sceneId": "scene-4",
+      "speaker": "아저씨,옥희",
+      "kind": "가사",
+      "song": 7,
+      "answer": "풍금 소리가 만드는 기분 좋은 세상",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "만질 순 없어도",
+      "pages": [
+        31
+      ],
+      "regionIds": [
+        "30:26"
+      ]
+    },
+    {
+      "id": "p31-y610.85-18",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "어때 이제 마음에 들어?",
+      "directions": [],
+      "cueSpeaker": "아저씨,옥희",
+      "cue": "풍금 소리가 만드는 기분 좋은 세상",
+      "pages": [
+        31
+      ],
+      "regionIds": [
+        "30:28"
+      ]
+    },
+    {
+      "id": "p31-y684.95-18",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "다행이다. 옥희야 이건 아저씨가 주는 선물이야. 까만색은 아니지만. 해볼까? 자.\n잘 어울린다.",
+      "directions": [
+        "옥희의 머리핀을 뺀다"
+      ],
+      "cueSpeaker": "옥희",
+      "cue": "우리 집 만큼은 아니지만. 괜찮은 것 같아요.",
+      "pages": [
+        31
+      ],
+      "regionIds": [
+        "30:32",
+        "30:33"
+      ]
+    },
+    {
+      "id": "p32-y145.16-18",
+      "sceneId": "scene-4",
+      "speaker": "아저씨",
+      "kind": "대사",
+      "song": null,
+      "answer": "걱정하지 마. 우리 집에 자주 오는 손님이야. 아저씨 금방 갔다 올게.",
+      "directions": [],
+      "cueSpeaker": "아저씨",
+      "cue": "다행이다. 옥희야 이건 아저씨가 주는 선물이야. 까만색은 아니지만. 해볼까? 자.\n잘 어울린다.",
+      "pages": [
+        32
+      ],
+      "regionIds": [
+        "31:1"
+      ]
+    },
+    {
+      "id": "p34-y233.80-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "아아아아아\n아아아아아\n아아아아아\n아아아아아",
+      "directions": [
+        "아아아아아"
+      ],
+      "cueSpeaker": "해웅",
+      "cue": "뭐야, 이거 왜 안 열려?",
+      "pages": [
+        34
+      ],
+      "regionIds": [
+        "33:2",
+        "33:4",
+        "33:5",
+        "33:6"
+      ]
+    },
+    {
+      "id": "p34-y302.48-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "어리석은 인간들이여. 우리를 보라. 우리가 보이는가?",
+      "directions": [],
+      "cueSpeaker": "귀신들",
+      "cue": "아아아아아\n아아아아아\n아아아아아\n아아아아아",
+      "pages": [
+        34
+      ],
+      "regionIds": [
+        "33:8"
+      ]
+    },
+    {
+      "id": "p34-y376.58-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "우리 목소리가 들리는가?",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "보여? 보이냐고.",
+      "pages": [
+        34
+      ],
+      "regionIds": [
+        "33:12"
+      ]
+    },
+    {
+      "id": "p34-y450.67-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "정녕 우리가 안 보인단 말이냐. 안타까운 일이로다. 모두 눈 먼 자들이로다. 눈을\n뜨고도 세상의 절반을 보지 못하다니.",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "들리냐고.",
+      "pages": [
+        34
+      ],
+      "regionIds": [
+        "33:16",
+        "33:17"
+      ]
+    },
+    {
+      "id": "p35-y93.57-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "대화 살아있는 사람과의 대화",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "질문 천년 만에 들어본 질문",
+      "pages": [
+        35
+      ],
+      "regionIds": [
+        "34:1"
+      ]
+    },
+    {
+      "id": "p35-y204.71-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "꿈",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "꿈 오랫동안 간직해온",
+      "pages": [
+        35
+      ],
+      "regionIds": [
+        "34:7"
+      ]
+    },
+    {
+      "id": "p35-y278.80-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "다들 모여봐! 정신들 차려 이건 기회야. 저 놈 지금 아무것도 모른다고.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "아오! 여긴 제대로 대화가 되는 귀신이 없어!",
+      "pages": [
+        35
+      ],
+      "regionIds": [
+        "34:11"
+      ]
+    },
+    {
+      "id": "p35-y352.89-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "야! 성격 좀 죽이고. 친절하게 상냥하게! 자 따라 와.",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "좋아. 절대 놓쳐선 안 돼. 지금 당장 죽여버려!",
+      "pages": [
+        35
+      ],
+      "regionIds": [
+        "34:15"
+      ]
+    },
+    {
+      "id": "p35-y426.98-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "드디어 나타난 운명의 자손이여! 부디 우리를 구원하소서!",
+      "directions": [],
+      "cueSpeaker": "선관",
+      "cue": "야! 성격 좀 죽이고. 친절하게 상냥하게! 자 따라 와.",
+      "pages": [
+        35
+      ],
+      "regionIds": [
+        "34:17"
+      ]
+    },
+    {
+      "id": "p35-y575.17-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "그래. 열어드려.",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "그래, 그거야. 문을 열어야지.",
+      "pages": [
+        35
+      ],
+      "regionIds": [
+        "34:23"
+      ]
+    },
+    {
+      "id": "p35-y686.31-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "이게 바로 운명의 자손이란 증거이니\n문은 저절로 열릴지어다",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "아니, 이거 왜 제가 하면 안 되는 겁니까?",
+      "pages": [
+        35
+      ],
+      "regionIds": [
+        "34:26",
+        "34:28"
+      ]
+    },
+    {
+      "id": "p36-y130.61-20",
+      "sceneId": "scene-5",
+      "speaker": "선관,처녀",
+      "kind": "가사",
+      "song": 8,
+      "answer": "우리와 약속을 하면",
+      "directions": [],
+      "cueSpeaker": "아기,장군",
+      "cue": "우리와 약속을 하면",
+      "pages": [
+        36
+      ],
+      "regionIds": [
+        "35:3"
+      ]
+    },
+    {
+      "id": "p36-y167.66-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "약속을 하면 약속을 하면",
+      "directions": [],
+      "cueSpeaker": "선관,처녀",
+      "cue": "우리와 약속을 하면",
+      "pages": [
+        36
+      ],
+      "regionIds": [
+        "35:5"
+      ]
+    },
+    {
+      "id": "p36-y278.80-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "야! 제발 분위기 좀 그만 죽여. 친절하게 상냥하게!",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "그럼 당연하지. 이 멍청한 인간놈아. 역시 그냥 죽여버려야..!",
+      "pages": [
+        36
+      ],
+      "regionIds": [
+        "35:11"
+      ]
+    },
+    {
+      "id": "p36-y426.98-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "나는 제삿밥 한 번 얻어먹는 게 꿈",
+      "directions": [],
+      "cueSpeaker": "아기,장군",
+      "cue": "그 꿈 이룰 수 있다면 문 정도는 열 수 있어",
+      "pages": [
+        36
+      ],
+      "regionIds": [
+        "35:19"
+      ]
+    },
+    {
+      "id": "p36-y552.67-20",
+      "sceneId": "scene-5",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 8,
+      "answer": "...그래!나는 아름다운 춤을 추는 게 꿈\n그 꿈 이룰 수 있다면 한이 없어\n나는 춤 출 수 있는 유연한 몸 갖는 게 꿈",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "거짓말했으면 죽어야지..!",
+      "pages": [
+        36
+      ],
+      "regionIds": [
+        "35:25",
+        "35:27",
+        "35:28"
+      ]
+    },
+    {
+      "id": "p37-y93.57-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "저 문을 열고",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "그러니까 이걸 전부 다 해드려야 저 문이 열린다는 말씀이세요?",
+      "pages": [
+        37
+      ],
+      "regionIds": [
+        "36:1"
+      ]
+    },
+    {
+      "id": "p37-y167.66-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "저 문을 열고",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "우리 함께 나아가자",
+      "pages": [
+        37
+      ],
+      "regionIds": [
+        "36:5"
+      ]
+    },
+    {
+      "id": "p37-y241.75-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "저 문을 열고",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "모두 꿈을 이뤄보자",
+      "pages": [
+        37
+      ],
+      "regionIds": [
+        "36:9"
+      ]
+    },
+    {
+      "id": "p37-y315.85-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "저 문을 열고 우리 약속해 저 문을 열고",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "우리 함께 손 맞잡고",
+      "pages": [
+        37
+      ],
+      "regionIds": [
+        "36:13"
+      ]
+    },
+    {
+      "id": "p37-y346.89-20",
+      "sceneId": "scene-5",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 8,
+      "answer": "구~~웃! 약속해\n문 저-문 열고\n우리 함께 나아가자\n문 저-문 열고\n모든 꿈을 이뤄보자\n문 저-문 넌\n약속만 하면 돼\n문 저-문 열고",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "새로운 세상으로\n저 문을 열고\n나아가고 싶다\n저 문을 열고\n아~~아~ 나아가고 싶다\n저 문을 열고\n나 이제 나갈 거야\n저 문을 열고",
+      "pages": [
+        37
+      ],
+      "regionIds": [
+        "36:16",
+        "36:18",
+        "36:20",
+        "36:23",
+        "36:24",
+        "36:27",
+        "36:28",
+        "36:31"
+      ]
+    },
+    {
+      "id": "p37-y491.76-20",
+      "sceneId": "scene-5",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 8,
+      "answer": "남은 건 약속뿐 저 문을 열고 새로운 세상으로",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "새로운 세상으로\n구~~웃! 약속해\n저 문을 열고\n문 저-문 열고\n우리 함께 나아가자\n나아가고 싶다\n저 문을 열고\n문 저-문 열고\n모든 꿈을 이뤄보자\n아~~아~ 나아가고 싶다\n저 문을 열고\n문 저-문 넌\n약속만 하면 돼\n나 이제 나갈 거야\n저 문을 열고\n문 저-문 열고",
+      "pages": [
+        37
+      ],
+      "regionIds": [
+        "36:33"
+      ]
+    },
+    {
+      "id": "p37-y528.81-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "약속 약속 약속 약속",
+      "directions": [],
+      "cueSpeaker": "다같이",
+      "cue": "남은 건 약속뿐 저 문을 열고 새로운 세상으로",
+      "pages": [
+        37
+      ],
+      "regionIds": [
+        "36:35"
+      ]
+    },
+    {
+      "id": "p37-y639.95-20",
+      "sceneId": "scene-5",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 8,
+      "answer": "들켰다. 튀어.",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "야! 니들 뭐하냐?",
+      "pages": [
+        37
+      ],
+      "regionIds": [
+        "36:39"
+      ]
+    },
+    {
+      "id": "p40-y696.45-25",
+      "sceneId": "scene-7",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "가네코!",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "여보세요?",
+      "pages": [
+        40
+      ],
+      "regionIds": [
+        "39:25"
+      ]
+    },
+    {
+      "id": "p41-y130.61-25",
+      "sceneId": "scene-7",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "공사는 잘 진행 중인가 궁금해서 말이야.",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "어우 백작님~",
+      "pages": [
+        41
+      ],
+      "regionIds": [
+        "40:3"
+      ]
+    },
+    {
+      "id": "p41-y204.71-25",
+      "sceneId": "scene-7",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "아주 기대가 커. 쿠로이는 말이야 경치가 아주 대단한 곳이야. 내가 조선에 있을\n때부터 탐이나서 잠을 못 잤다고.",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "그럼요. 누가 하는 일인데요.",
+      "pages": [
+        41
+      ],
+      "regionIds": [
+        "40:7",
+        "40:8"
+      ]
+    },
+    {
+      "id": "p41-y293.35-25",
+      "sceneId": "scene-7",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "아주 좋아. 그럼 난 우리 고생하는 가네코에게 선물로 값비싼 와인을 준비해야겠..",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "욕심쟁이~ 안 그래도 그날 광장에서 불꽃놀이까지 해서 아주 볼만할 거예요.",
+      "pages": [
+        41
+      ],
+      "regionIds": [
+        "40:12"
+      ]
+    },
+    {
+      "id": "p41-y367.44-25",
+      "sceneId": "scene-7",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "하하하 그래. 그럼 그날 보자고.",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "어머. 백작님 저 당장 끊어야겠어요. 당장 백작님을 위한 공사를 시작하려고요.",
+      "pages": [
+        41
+      ],
+      "regionIds": [
+        "40:16"
+      ]
+    },
+    {
+      "id": "p42-y528.53-29",
+      "sceneId": "scene-8",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 11,
+      "answer": "오늘이 날이네\n집주인 승천하는 날\n그녀가 한을 풀고\n하늘로 승천하는 날\n그러니 준비해\n바다가 보이는 창문을\n꽃병 가득히 담뿍 향기를 담은 제비꽃\n완벽한 오늘을 준비해",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "여러분. 나 먼저 갈게요. 이 풍진 세상에서 모두 잘 살아요.",
+      "pages": [
+        42
+      ],
+      "regionIds": [
+        "41:10",
+        "41:12",
+        "41:13",
+        "41:14",
+        "41:15",
+        "41:16",
+        "41:17",
+        "41:18"
+      ]
+    },
+    {
+      "id": "p42-y661.40-29",
+      "sceneId": "scene-8",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 11,
+      "answer": "우~",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "나는 노래를 하고",
+      "pages": [
+        42
+      ],
+      "regionIds": [
+        "41:21"
+      ]
+    },
+    {
+      "id": "p43-y87.57-29",
+      "sceneId": "scene-8",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 11,
+      "answer": "노래~",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "너는 노래를 하고",
+      "pages": [
+        43
+      ],
+      "regionIds": [
+        "42:2"
+      ]
+    },
+    {
+      "id": "p43-y139.16-29",
+      "sceneId": "scene-8",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 11,
+      "answer": "우~",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "너는 풍금을 치고",
+      "pages": [
+        43
+      ],
+      "regionIds": [
+        "42:6"
+      ]
+    },
+    {
+      "id": "p43-y190.75-29",
+      "sceneId": "scene-8",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 11,
+      "answer": "풍금~",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "나는 풍금을 치고",
+      "pages": [
+        43
+      ],
+      "regionIds": [
+        "42:10"
+      ]
+    },
+    {
+      "id": "p43-y242.35-29",
+      "sceneId": "scene-8",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 11,
+      "answer": "밥 바~ 밥 바~",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "노래가 완성되면",
+      "pages": [
+        43
+      ],
+      "regionIds": [
+        "42:14"
+      ]
+    },
+    {
+      "id": "p43-y293.94-29",
+      "sceneId": "scene-8",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 11,
+      "answer": "아~ 성불! 성불!",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "난 떠날 수 있어",
+      "pages": [
+        43
+      ],
+      "regionIds": [
+        "42:18"
+      ]
+    },
+    {
+      "id": "p43-y351.53-29",
+      "sceneId": "scene-8",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 11,
+      "answer": "말한 건 다 준비했어. 자 그러면 지금부터 성불식을 시작하겠습니다. 식순에\n의거하여 가장 먼저 옥희 양의 성불가가 있겠습니다. 오늘 반주에는 박해웅군이\n수고해 주시겠습니다.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "난 떠날 수 있어\n아~ 성불! 성불!",
+      "pages": [
+        43
+      ],
+      "regionIds": [
+        "42:21",
+        "42:22",
+        "42:23"
+      ]
+    },
+    {
+      "id": "p43-y492.35-29",
+      "sceneId": "scene-8",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 11,
+      "answer": "우우우우\n우우우우\n아아아아\n우우우우\n우우우우우우\n옥희, 성불에 실패한다.",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "풍금 소리를 타고\n스며든 우리의 바람\n볼 순 없어도 만질 순 없어도\n풍금 소리가 만드는\n기분 좋은 세상",
+      "pages": [
+        43
+      ],
+      "regionIds": [
+        "42:31",
+        "42:33",
+        "42:36",
+        "42:38",
+        "42:40",
+        "42:41"
+      ]
+    },
+    {
+      "id": "p44-y93.57-29",
+      "sceneId": "scene-8",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 11,
+      "answer": "보여.",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "나 보여?",
+      "pages": [
+        44
+      ],
+      "regionIds": [
+        "43:1"
+      ]
+    },
+    {
+      "id": "p44-y167.66-29",
+      "sceneId": "scene-8",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 11,
+      "answer": "반대로 돌아. 반대로!",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "다시! 다시 해보자!",
+      "pages": [
+        44
+      ],
+      "regionIds": [
+        "43:5"
+      ]
+    },
+    {
+      "id": "p44-y198.71-29",
+      "sceneId": "scene-8",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 11,
+      "answer": "우우우우\n우우우우\n아아아아\n우우우우\n우우우우우우\n옥희, 이번에도 성불에 실패한다.",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "풍금 소리를 타고\n흐르는 우리의 상상\n볼 순 없어도 만질 순 없어도\n풍금 소리가 만드는\n기분 좋은 세상",
+      "pages": [
+        44
+      ],
+      "regionIds": [
+        "43:8",
+        "43:10",
+        "43:13",
+        "43:15",
+        "43:17",
+        "43:18"
+      ]
+    },
+    {
+      "id": "p49-y167.66-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "그래 너 명대로 못 살아서 정확하게 기억도 못하잖아.",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "거 봐. 너 성불 안 되잖아. 너 처녀귀신 아니라니까.",
+      "pages": [
+        49
+      ],
+      "regionIds": [
+        "48:5"
+      ]
+    },
+    {
+      "id": "p49-y307.89-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "난 모르겠다.",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "글쎄. 어쩌면 계곡물에 퐁당 빠져버린 게 아닐까?",
+      "pages": [
+        49
+      ],
+      "regionIds": [
+        "48:13"
+      ]
+    },
+    {
+      "id": "p49-y536.76-34",
+      "sceneId": "scene-10",
+      "speaker": "귀신들",
+      "kind": "대사",
+      "song": null,
+      "answer": "안돼!! 안돼!! 위험해!!!",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "됐고! 방법을 찾은 것 같아. 내 사고를 기억할 만한 사람이 있어. 살아있는 사람!\n단서가 될 것 같아. 그래서 말인데, 내가 몸 속으로!",
+      "pages": [
+        49
+      ],
+      "regionIds": [
+        "48:26"
+      ]
+    },
+    {
+      "id": "p50-y478.58-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "하지 마! 제발! 살려줘!",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "나도~",
+      "pages": [
+        50
+      ],
+      "regionIds": [
+        "49:18"
+      ]
+    },
+    {
+      "id": "p50-y552.67-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "절대 안 돼.",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "할아버지 제발. 나 이 방법밖에 없어.",
+      "pages": [
+        50
+      ],
+      "regionIds": [
+        "49:22"
+      ]
+    },
+    {
+      "id": "p50-y626.76-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "아무리 졸라도 소용없어.",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "한번만 부탁이야.",
+      "pages": [
+        50
+      ],
+      "regionIds": [
+        "49:26"
+      ]
+    },
+    {
+      "id": "p50-y700.85-34",
+      "sceneId": "scene-10",
+      "speaker": "옥희,선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "뭐?",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "약속! 제가 약속을 하겠습니다.",
+      "pages": [
+        50
+      ],
+      "regionIds": [
+        "49:30"
+      ]
+    },
+    {
+      "id": "p51-y130.61-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "정말?",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "대신 제가 먼저 나갈 수 있게 도와주신다고 하면 약속을 하겠습니다.",
+      "pages": [
+        51
+      ],
+      "regionIds": [
+        "50:3"
+      ]
+    },
+    {
+      "id": "p51-y204.71-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "좋아. 그럼 손가락 걸고 맹세해. 물리기 없기야.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "그리고 우리 옥희 꼭 성불시켜주셔야 합니다.",
+      "pages": [
+        51
+      ],
+      "regionIds": [
+        "50:7"
+      ]
+    },
+    {
+      "id": "p51-y278.80-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "전혀. 할아버지는 여기 지박령이 아니라서 그런 걱정은 안 해도 돼.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "근데 이거 약속하면 저 더 못 나가지는 거 아니에요?",
+      "pages": [
+        51
+      ],
+      "regionIds": [
+        "50:11"
+      ]
+    },
+    {
+      "id": "p51-y352.89-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "야, 너 나 못 믿지?",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "제가 미리 알아야 할 부작용 같은 건 없습니까?",
+      "pages": [
+        51
+      ],
+      "regionIds": [
+        "50:15"
+      ]
+    },
+    {
+      "id": "p51-y501.08-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "할 거야 말 거야.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "옥희야 걱정마. 다 잘 될거야.",
+      "pages": [
+        51
+      ],
+      "regionIds": [
+        "50:23"
+      ]
+    },
+    {
+      "id": "p51-y575.17-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "야 저거 뭐냐?",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "할게요.",
+      "pages": [
+        51
+      ],
+      "regionIds": [
+        "50:27"
+      ]
+    },
+    {
+      "id": "p52-y93.57-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "좋았어. 이제부터 내 얘기 잘 들어. 일단 빙의가 잘 되기 위해선 산 사람의 기운과\n잘 맞아 떨어져야 돼. 안 그러면 튕겨져 나오거든. 그리고 산 사람의 기운은 늘\n변하기 때문에 한 번 들어갔다가 영영 분리되지 않을 수도 있어. 내가 그래서\n위험하다 그랬던 거야.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "안 괜찮아.",
+      "pages": [
+        52
+      ],
+      "regionIds": [
+        "51:1",
+        "51:2",
+        "51:3",
+        "51:4"
+      ]
+    },
+    {
+      "id": "p52-y211.30-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "일단 주문을 외우면서 산 사람 몸에 부딪치면 빙의가 되는 거야.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "그래서 어떻게 하는 거냐고요.",
+      "pages": [
+        52
+      ],
+      "regionIds": [
+        "51:8"
+      ]
+    },
+    {
+      "id": "p52-y285.39-34",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "다롱디리.. 다롱디리…!",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "주문이 뭔데?",
+      "pages": [
+        52
+      ],
+      "regionIds": [
+        "51:12"
+      ]
+    },
+    {
+      "id": "p55-y441.53-35",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 13,
+      "answer": "좋아 해보자고.",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "응. 해웅이가 저 여자한테 말을 걸거야 그때 해야 돼.",
+      "pages": [
+        55
+      ],
+      "regionIds": [
+        "54:18"
+      ]
+    },
+    {
+      "id": "p55-y626.76-35",
+      "sceneId": "scene-10",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 13,
+      "answer": "가자.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "여기 계단 쪽 한번 보시죠!",
+      "pages": [
+        55
+      ],
+      "regionIds": [
+        "54:28"
+      ]
+    },
+    {
+      "id": "p55-y663.81-35",
+      "sceneId": "scene-10",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 13,
+      "answer": "다롱디리 다롱디리 다롱디리 다롱디리\n다롱디리다 다롱디리다",
+      "directions": [],
+      "cueSpeaker": "선관",
+      "cue": "가자.",
+      "pages": [
+        55
+      ],
+      "regionIds": [
+        "54:29",
+        "54:31"
+      ]
+    },
+    {
+      "id": "p58-y130.61-35",
+      "sceneId": "scene-10",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 13,
+      "answer": "다롱디리 다롱디리 다롱디리 다롱디리\n다롱디리다 다롱디리다",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "다들 너랑 약속하겠다고 기다리고 있어.",
+      "pages": [
+        58
+      ],
+      "regionIds": [
+        "57:2",
+        "57:4"
+      ]
+    },
+    {
+      "id": "p58-y359.70-37",
+      "sceneId": "scene-11",
+      "speaker": "무당",
+      "kind": "대사",
+      "song": null,
+      "answer": "옴, 사바하. 말뚝을 박아야 합니다. 요망한 원혼이 아직 이 저택에 남아 있는 것이\n분명합니다. 원귀가 집 밖에서 활기를 치지 못하는 것을 보아하니 지박령이 틀림\n없습니다. 땅에 기운이 흐르는 길목마다 이 말뚝을 박으면 지박령이 꼼짝을 못 할\n뿐더러, 죽은 자가 산 사람의 앞길을 막지 못 할 것입니다.",
+      "directions": [],
+      "cueSpeaker": "장면 시작",
+      "cue": "",
+      "pages": [
+        58
+      ],
+      "regionIds": [
+        "57:6",
+        "57:7",
+        "57:8",
+        "57:9"
+      ]
+    },
+    {
+      "id": "p58-y477.43-37",
+      "sceneId": "scene-11",
+      "speaker": "무당",
+      "kind": "대사",
+      "song": null,
+      "answer": "예. 근데 비용이 좀..",
+      "directions": [],
+      "cueSpeaker": "노다",
+      "cue": "좋아. 말뚝을 박아라.",
+      "pages": [
+        58
+      ],
+      "regionIds": [
+        "57:13"
+      ]
+    },
+    {
+      "id": "p58-y654.71-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "그래. 집 주인 우리가 아주 어렵게 알아낸 거야.",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "잠깐만요. 이건 옥희가 성불을 하고 제가 나가는 것이 선제적인 조건입니다.",
+      "pages": [
+        58
+      ],
+      "regionIds": [
+        "57:19"
+      ]
+    },
+    {
+      "id": "p59-y130.61-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "그래.  쟤가 제일 많이 수고했어. 그러니까 뭔가 단서가 될 만한\n것들을 잘 생각해 둬야 돼.",
+      "directions": [
+        "처녀 가리키며"
+      ],
+      "cueSpeaker": "장군",
+      "cue": "죽을뻔 했어.",
+      "pages": [
+        59
+      ],
+      "regionIds": [
+        "58:3",
+        "58:4"
+      ]
+    },
+    {
+      "id": "p59-y219.25-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "자, 각자 본대로만 얘기되는 거야. 준비 됐어?",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "알겠어.",
+      "pages": [
+        59
+      ],
+      "regionIds": [
+        "58:8"
+      ]
+    },
+    {
+      "id": "p59-y256.30-37",
+      "sceneId": "scene-11",
+      "speaker": "귀신들",
+      "kind": "대사",
+      "song": null,
+      "answer": "어!",
+      "directions": [],
+      "cueSpeaker": "선관",
+      "cue": "자, 각자 본대로만 얘기되는 거야. 준비 됐어?",
+      "pages": [
+        59
+      ],
+      "regionIds": [
+        "58:10"
+      ]
+    },
+    {
+      "id": "p59-y293.35-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "각자 위치로!",
+      "directions": [],
+      "cueSpeaker": "귀신들",
+      "cue": "어!",
+      "pages": [
+        59
+      ],
+      "regionIds": [
+        "58:12"
+      ]
+    },
+    {
+      "id": "p59-y330.39-37",
+      "sceneId": "scene-11",
+      "speaker": "귀신들",
+      "kind": "대사",
+      "song": null,
+      "answer": "위치로!",
+      "directions": [],
+      "cueSpeaker": "선관",
+      "cue": "각자 위치로!",
+      "pages": [
+        59
+      ],
+      "regionIds": [
+        "58:14"
+      ]
+    },
+    {
+      "id": "p59-y404.48-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "자, 시작한다! 청년 요시다의 일생, 어이!",
+      "directions": [],
+      "cueSpeaker": "귀신들",
+      "cue": "위치로!",
+      "pages": [
+        59
+      ],
+      "regionIds": [
+        "58:16"
+      ]
+    },
+    {
+      "id": "p60-y93.57-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "알았어. 소년은 여차저차 저차저차 차근차근 쑥쑥쑥 자라서\n욕심이 덕지덕지 붙은 청년이 되었는디",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "넘어 가.",
+      "pages": [
+        60
+      ],
+      "regionIds": [
+        "59:0",
+        "59:2"
+      ]
+    },
+    {
+      "id": "p60-y182.21-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "마을에서 가장 예쁜 처자를 만나",
+      "directions": [],
+      "cueSpeaker": "처녀",
+      "cue": "욕심이 덕지덕지 내가 아주 그냥~",
+      "pages": [
+        60
+      ],
+      "regionIds": [
+        "59:6"
+      ]
+    },
+    {
+      "id": "p60-y256.30-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "첫눈에 사랑에 빠졌겄다.",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "처자.",
+      "pages": [
+        60
+      ],
+      "regionIds": [
+        "59:10"
+      ]
+    },
+    {
+      "id": "p60-y478.58-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "그래, 알았어.\n다 큰 요시다는 항구 근처 소매치기로 생활했는디\n어느 날 운 좋게 저 묵직한 가방 하나를 훔치게 되었던 것이었다~\n그 가방은 저~ 절벽이 검디검은 저택에서 살던 한 남자의 것이었고!",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "빨리 좀 넘어가자 제발!",
+      "pages": [
+        60
+      ],
+      "regionIds": [
+        "59:19",
+        "59:21",
+        "59:22",
+        "59:23"
+      ]
+    },
+    {
+      "id": "p60-y584.31-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "그 가방 속을 뒤져보니 팔아봤~~짜~~ 돈 안 되는 쓰레기만 촤르르르르르\n쏟아지는디! 그 속에 작은 시계가 째깍 째각 째째깍 째깍",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "우리 아저씨야.",
+      "pages": [
+        60
+      ],
+      "regionIds": [
+        "59:27",
+        "59:28"
+      ]
+    },
+    {
+      "id": "p60-y672.95-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "그렇지! 그 째간한 시계말고는 돈 되는 게 하나도 없던지라\n이때 들리는 소문에는\n저택의 주인이 엄청난 부자라는 소문이 자자~ 했는디\n이에 청년 요시다는 저택의 주인과 연줄을 맺고 싶었으니\n마치 자신이 가방을 되찾아준 것처럼 꾸미려고 했구나!\n이때 검은 저택으로 향하는 청년 요시다",
+      "directions": [],
+      "cueSpeaker": "옥희,해웅",
+      "cue": "시계!",
+      "pages": [
+        60,
+        61
+      ],
+      "regionIds": [
+        "59:32",
+        "59:34",
+        "59:35",
+        "60:0",
+        "60:2",
+        "60:4"
+      ]
+    },
+    {
+      "id": "p61-y301.89-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "누구세요.",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "그때 문을 열어준 건 저택에 살던",
+      "pages": [
+        61
+      ],
+      "regionIds": [
+        "60:12"
+      ]
+    },
+    {
+      "id": "p61-y413.03-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "누구세요?",
+      "directions": [
+        "옥희 목소리로"
+      ],
+      "cueSpeaker": "아기",
+      "cue": "여자아이였다",
+      "pages": [
+        61
+      ],
+      "regionIds": [
+        "60:18"
+      ]
+    },
+    {
+      "id": "p61-y524.17-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "안 계세요. 어떻게 오셨죠?",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "안녕. 어른은 안 계시니?",
+      "pages": [
+        61
+      ],
+      "regionIds": [
+        "60:24"
+      ]
+    },
+    {
+      "id": "p61-y598.26-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "동의회에서 오셨군요.",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "나 이 시계 때문에.",
+      "pages": [
+        61
+      ],
+      "regionIds": [
+        "60:28"
+      ]
+    },
+    {
+      "id": "p61-y672.35-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "잠시만 기다리세요.",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "동의회?",
+      "pages": [
+        61
+      ],
+      "regionIds": [
+        "60:32"
+      ]
+    },
+    {
+      "id": "p62-y130.61-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "이 서신을 상해까지 전해주시면 됩니다. 그럼 부디 안전히 잘 부탁드립니다.",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "이거 한몫 단단히 챙기겠는데?",
+      "pages": [
+        62
+      ],
+      "regionIds": [
+        "61:3"
+      ]
+    },
+    {
+      "id": "p62-y293.35-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "그는 검은 저택 주인을 고발했어.\n가난을 벗어나기 위해",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "비밀자금을 상해로 옮기기 위해 좀 더 안전한 연락책이 필요합니다. 여기도 곧\n위험해질 것 같습니다.",
+      "pages": [
+        62
+      ],
+      "regionIds": [
+        "61:9",
+        "61:11"
+      ]
+    },
+    {
+      "id": "p62-y456.08-37",
+      "sceneId": "scene-11",
+      "speaker": "선관",
+      "kind": "대사",
+      "song": null,
+      "answer": "편지 속에 적혀있던",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "그리고 청년은 빈 저택에 숨어들었어.",
+      "pages": [
+        62
+      ],
+      "regionIds": [
+        "61:17"
+      ]
+    },
+    {
+      "id": "p62-y530.17-37",
+      "sceneId": "scene-11",
+      "speaker": "선관,장군",
+      "kind": "대사",
+      "song": null,
+      "answer": "혼자 챙기기 위해",
+      "directions": [],
+      "cueSpeaker": "장군",
+      "cue": "은행증서를",
+      "pages": [
+        62
+      ],
+      "regionIds": [
+        "61:21"
+      ]
+    },
+    {
+      "id": "p64-y294.49-39",
+      "sceneId": "scene-12",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 14,
+      "answer": "오세요\n오세요\n아~~아~~ 와우 와우 와우 와우\n오오오오\n오~ 쿠로이~",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "아늑한 휴식을 원하는 그대\n최고급 휴양을 즐기는 그대\n향긋한 나무 사이로 펼쳐진 바다가 있는\n오오오오\n호텔 쿠로이로 와요",
+      "pages": [
+        64
+      ],
+      "regionIds": [
+        "63:8",
+        "63:10",
+        "63:13",
+        "63:16",
+        "63:18"
+      ]
+    },
+    {
+      "id": "p64-y447.31-39",
+      "sceneId": "scene-12",
+      "speaker": "가네코,요시다,백작,노다,해웅",
+      "kind": "가사",
+      "song": 14,
+      "answer": "오세요 오세요 오세요 호텔 쿠로이로 와요",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "당신이 바라던 그 순간\n당신이 꿈꾸던 그 밤\n당신이 사랑하는 그 사람과 함께",
+      "pages": [
+        64
+      ],
+      "regionIds": [
+        "63:24"
+      ]
+    },
+    {
+      "id": "p64-y529.95-39",
+      "sceneId": "scene-12",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 14,
+      "answer": "오세요\n오세요\n아~~아~~ 와우 와우 와우 와우",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "아늑한 휴식을 원하는 그대\n최고급 휴양을 즐기는 그대\n화려한 불빛이 밤새 꺼지지 않는",
+      "pages": [
+        64
+      ],
+      "regionIds": [
+        "63:28",
+        "63:30",
+        "63:34"
+      ]
+    },
+    {
+      "id": "p64-y602.09-39",
+      "sceneId": "scene-12",
+      "speaker": "가네코,요시다,백작,노다,해웅",
+      "kind": "가사",
+      "song": 14,
+      "answer": "당신의 품격 호텔 쿠로이",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "아늑한 휴식을 원하는 그대\n오세요\n최고급 휴양을 즐기는 그대\n오세요\n화려한 불빛이 밤새 꺼지지 않는\n아~~아~~ 와우 와우 와우 와우",
+      "pages": [
+        64
+      ],
+      "regionIds": [
+        "63:36"
+      ]
+    },
+    {
+      "id": "p65-y606.22-40",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "가네코!",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "너무 잘 나가지는데요?",
+      "pages": [
+        65
+      ],
+      "regionIds": [
+        "64:24"
+      ]
+    },
+    {
+      "id": "p65-y680.31-40",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "내가 온 줄 어떻게 알고 마중까지 나온건가?",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "숨어! 숨어! 어머~ 백작님!",
+      "pages": [
+        65
+      ],
+      "regionIds": [
+        "64:28"
+      ]
+    },
+    {
+      "id": "p66-y130.61-40",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "자, 축하선물~ 이지만 나 혼자 마실거야. 왜냐면 아주 비싸고 값비싼 와인이니까.",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "제가 당연히 알고 마중까지 나와야죠.",
+      "pages": [
+        66
+      ],
+      "regionIds": [
+        "65:3"
+      ]
+    },
+    {
+      "id": "p66-y204.71-40",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "뭐라고?",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "그래.너 다 먹어. 다 먹어.",
+      "pages": [
+        66
+      ],
+      "regionIds": [
+        "65:7"
+      ]
+    },
+    {
+      "id": "p66-y278.80-40",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "와우, 호텔이 아주 멋지군. 근데 올라오는 길이 왜 이렇게 힘든 건가?",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "아니에요, 아니에요.",
+      "pages": [
+        66
+      ],
+      "regionIds": [
+        "65:11"
+      ]
+    },
+    {
+      "id": "p66-y352.89-40",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "이거 뭐라도 터지면 전부 다 죽겠어.",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "백작님. 이 정도 경치를 즐기려면 그정도 수고는 하셔야죠.",
+      "pages": [
+        66
+      ],
+      "regionIds": [
+        "65:15"
+      ]
+    },
+    {
+      "id": "p66-y426.98-40",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "대사",
+      "song": null,
+      "answer": "그래.  이거 까르베네 소비뇽인데, 자네가 먹기엔 좀 써.",
+      "directions": [
+        "계단 올라가며"
+      ],
+      "cueSpeaker": "가네코",
+      "cue": "농담도~ 이거 봐요 너무 예쁘죠? 제가 방으로 안내해드릴게요.",
+      "pages": [
+        66
+      ],
+      "regionIds": [
+        "65:19"
+      ]
+    },
+    {
+      "id": "p67-y323.62-41",
+      "sceneId": "scene-12",
+      "speaker": "아저씨",
+      "kind": "가사",
+      "song": 15,
+      "answer": "자, 이제 눈을 감고, 어..",
+      "directions": [
+        "목소리"
+      ],
+      "cueSpeaker": "옥희",
+      "cue": "아무것도 보이지 않아\n아무것도 들리지 않아\n모든 것이 멈춰버린 나\n난 오래 전 이미 죽은 사람\n끝없는 어둠에 갇힌 영혼",
+      "pages": [
+        67
+      ],
+      "regionIds": [
+        "66:13"
+      ]
+    },
+    {
+      "id": "p70-y93.57-41",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "가사",
+      "song": 15,
+      "answer": "그래. 아주 마음대로들 해놨더군. 역시 네가 배신자였어. 처음부터\n의심스러웠어. 출신을 알 수 없는 일본인이라니. 내가 믿을 것 같았어?",
+      "directions": [
+        "총을 겨누며"
+      ],
+      "cueSpeaker": "가네코",
+      "cue": "어차피 죽을 목숨 마음대로 생각하시던가.",
+      "pages": [
+        70
+      ],
+      "regionIds": [
+        "69:1",
+        "69:2"
+      ]
+    },
+    {
+      "id": "p70-y330.39-41",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "가사",
+      "song": 15,
+      "answer": "움직이지 마!!!",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "움직이지 마!!",
+      "pages": [
+        70
+      ],
+      "regionIds": [
+        "69:12"
+      ]
+    },
+    {
+      "id": "p70-y663.81-42",
+      "sceneId": "scene-12",
+      "speaker": "귀신들",
+      "kind": "가사",
+      "song": 16,
+      "answer": "다롱디리 다롱디리 다롱디리 다롱디리 다롱디리",
+      "directions": [],
+      "cueSpeaker": "해웅",
+      "cue": "옥희야!",
+      "pages": [
+        70
+      ],
+      "regionIds": [
+        "69:22"
+      ]
+    },
+    {
+      "id": "p71-y161.66-42",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "가사",
+      "song": 16,
+      "answer": "기분이 좋아 좋아 좋아",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "미쳤어 좋아 좋아 좋아",
+      "pages": [
+        71
+      ],
+      "regionIds": [
+        "70:4"
+      ]
+    },
+    {
+      "id": "p71-y272.80-42",
+      "sceneId": "scene-12",
+      "speaker": "가네코,요시다,백작,노다",
+      "kind": "가사",
+      "song": 16,
+      "answer": "좋아 좋아 좋아 좋아 좋아 좋아",
+      "directions": [],
+      "cueSpeaker": "요시다",
+      "cue": "진짜 좋아 좋아",
+      "pages": [
+        71
+      ],
+      "regionIds": [
+        "70:8"
+      ]
+    },
+    {
+      "id": "p71-y546.67-42",
+      "sceneId": "scene-12",
+      "speaker": "가네코,요시다,백작,노다",
+      "kind": "가사",
+      "song": 16,
+      "answer": "맞아 맞아 맞아 맞아 맞아",
+      "directions": [],
+      "cueSpeaker": "노다",
+      "cue": "우린 뭐든지 다 할 수 있어",
+      "pages": [
+        71
+      ],
+      "regionIds": [
+        "70:23"
+      ]
+    },
+    {
+      "id": "p71-y598.26-42",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "가사",
+      "song": 16,
+      "answer": "원하는 건 다 먹을 수 있어",
+      "directions": [],
+      "cueSpeaker": "가네코,요시다,백작,노다",
+      "cue": "맞아 맞아 맞아 맞아 맞아",
+      "pages": [
+        71
+      ],
+      "regionIds": [
+        "70:26"
+      ]
+    },
+    {
+      "id": "p71-y680.90-42",
+      "sceneId": "scene-12",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 16,
+      "answer": "부숴",
+      "directions": [],
+      "cueSpeaker": "요시다",
+      "cue": "원한다면 전부 부술 수 있고",
+      "pages": [
+        71
+      ],
+      "regionIds": [
+        "70:32"
+      ]
+    },
+    {
+      "id": "p72-y87.57-42",
+      "sceneId": "scene-12",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 16,
+      "answer": "짠",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "원한다면 춤도 출 수 있어",
+      "pages": [
+        72
+      ],
+      "regionIds": [
+        "71:2"
+      ]
+    },
+    {
+      "id": "p72-y159.71-42",
+      "sceneId": "scene-12",
+      "speaker": "가네코,요시다,백작,노다",
+      "kind": "가사",
+      "song": 16,
+      "answer": "우린 뭐든지 다 할 수 있어",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "원한다면 춤도 출 수 있어\n짠",
+      "pages": [
+        72
+      ],
+      "regionIds": [
+        "71:6"
+      ]
+    },
+    {
+      "id": "p72-y205.30-42",
+      "sceneId": "scene-12",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 16,
+      "answer": "좋아 좋아 좋아",
+      "directions": [],
+      "cueSpeaker": "요시다",
+      "cue": "미쳤어 좋아 좋아 하늘을 날아갈 것 같은 기분",
+      "pages": [
+        72
+      ],
+      "regionIds": [
+        "71:10"
+      ]
+    },
+    {
+      "id": "p72-y271.44-42",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "가사",
+      "song": 16,
+      "answer": "잘났어 우린 좋아 세상을 다 가진 것 같은 기분",
+      "directions": [],
+      "cueSpeaker": "요시다",
+      "cue": "미쳤어 좋아 좋아 하늘을 날아갈 것 같은 기분\n좋아 좋아 좋아",
+      "pages": [
+        72
+      ],
+      "regionIds": [
+        "71:14"
+      ]
+    },
+    {
+      "id": "p72-y374.62-42",
+      "sceneId": "scene-12",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 16,
+      "answer": "우~~아~~",
+      "directions": [],
+      "cueSpeaker": "요시다,노다",
+      "cue": "아무것도 우릴 막을 순 없어",
+      "pages": [
+        72
+      ],
+      "regionIds": [
+        "71:20"
+      ]
+    },
+    {
+      "id": "p72-y426.22-42",
+      "sceneId": "scene-12",
+      "speaker": "가네코,백작",
+      "kind": "가사",
+      "song": 16,
+      "answer": "원하는 건 모두 해볼 수 있어",
+      "directions": [],
+      "cueSpeaker": "요시다,노다",
+      "cue": "아무것도 우릴 막을 순 없어\n우~~아~~",
+      "pages": [
+        72
+      ],
+      "regionIds": [
+        "71:23"
+      ]
+    },
+    {
+      "id": "p72-y483.81-42",
+      "sceneId": "scene-12",
+      "speaker": "가네코,요시다,백작,노다",
+      "kind": "가사",
+      "song": 16,
+      "answer": "원하는 건 원하는 건 원하는 건 원하는 건",
+      "directions": [],
+      "cueSpeaker": "가네코,백작",
+      "cue": "원하는 건 모두 해볼 수 있어\n우~~아~~",
+      "pages": [
+        72
+      ],
+      "regionIds": [
+        "71:27"
+      ]
+    },
+    {
+      "id": "p73-y93.57-42",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "가사",
+      "song": 16,
+      "answer": "와, 아름다운 춤이야 저 파닥거림 좀 봐",
+      "directions": [],
+      "cueSpeaker": "노다",
+      "cue": "할아버지, 드디어 춤추는거야?",
+      "pages": [
+        73
+      ],
+      "regionIds": [
+        "72:1"
+      ]
+    },
+    {
+      "id": "p73-y130.61-42",
+      "sceneId": "scene-12",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 16,
+      "answer": "그래, 바로 이 춤이야. 이제 나는 죽어도 여한이 없어.",
+      "directions": [],
+      "cueSpeaker": "백작",
+      "cue": "와, 아름다운 춤이야 저 파닥거림 좀 봐",
+      "pages": [
+        73
+      ],
+      "regionIds": [
+        "72:3"
+      ]
+    },
+    {
+      "id": "p73-y167.66-42",
+      "sceneId": "scene-12",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 16,
+      "answer": "성~~불~~성~~불~~",
+      "directions": [],
+      "cueSpeaker": "선관",
+      "cue": "그래, 바로 이 춤이야. 이제 나는 죽어도 여한이 없어.",
+      "pages": [
+        73
+      ],
+      "regionIds": [
+        "72:5"
+      ]
+    },
+    {
+      "id": "p73-y204.71-42",
+      "sceneId": "scene-12",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 16,
+      "answer": "나 먼저 갈게. 다들 성불해.",
+      "directions": [],
+      "cueSpeaker": "다같이",
+      "cue": "성~~불~~성~~불~~",
+      "pages": [
+        73
+      ],
+      "regionIds": [
+        "72:7"
+      ]
+    },
+    {
+      "id": "p73-y278.80-42",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "가사",
+      "song": 16,
+      "answer": "할아버지 잘가.",
+      "directions": [],
+      "cueSpeaker": "선관",
+      "cue": "나 먼저 갈게. 다들 성불해.",
+      "pages": [
+        73
+      ],
+      "regionIds": [
+        "72:9"
+      ]
+    },
+    {
+      "id": "p73-y389.94-42",
+      "sceneId": "scene-12",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 16,
+      "answer": "성~~불~~성~~불~~",
+      "directions": [],
+      "cueSpeaker": "아기",
+      "cue": "우와 전에는 한번도 먹어본 적 없는 맛이야.",
+      "pages": [
+        73
+      ],
+      "regionIds": [
+        "72:13"
+      ]
+    },
+    {
+      "id": "p75-y235.75-42",
+      "sceneId": "scene-12",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 16,
+      "answer": "다롱디리\n다롱디리 다롱디리 다롱디리\n다롱디리 다롱디리 다롱디리\n다롱디리 다롱디리 다롱디리",
+      "directions": [],
+      "cueSpeaker": "노다",
+      "cue": "다롱디리\n다롱디리\n다롱디리\n다롱디리",
+      "pages": [
+        75
+      ],
+      "regionIds": [
+        "74:6",
+        "74:8",
+        "74:11",
+        "74:13"
+      ]
+    },
+    {
+      "id": "p75-y310.44-42",
+      "sceneId": "scene-12",
+      "speaker": "선관,아기,장군",
+      "kind": "가사",
+      "song": 16,
+      "answer": "다롱디리다 다롱디리다",
+      "directions": [],
+      "cueSpeaker": "노다",
+      "cue": "다롱디리\n다롱디리\n다롱디리\n다롱디리 다롱디리 다롱디리\n다롱디리\n다롱디리 다롱디리 다롱디리\n다롱디리\n다롱디리 다롱디리 다롱디리",
+      "pages": [
+        75
+      ],
+      "regionIds": [
+        "74:15"
+      ]
+    },
+    {
+      "id": "p75-y643.85-42",
+      "sceneId": "scene-12",
+      "speaker": "백작",
+      "kind": "가사",
+      "song": 16,
+      "answer": "움직이지 마! 다 죽여버리겠어. 내가 이 스위치만 누르면..!",
+      "directions": [],
+      "cueSpeaker": "가네코",
+      "cue": "내 폭탄! 내 폭탄!",
+      "pages": [
+        75
+      ],
+      "regionIds": [
+        "74:27"
+      ]
+    },
+    {
+      "id": "p79-y285.39-44",
+      "sceneId": "scene-13",
+      "speaker": "선관",
+      "kind": "가사",
+      "song": 17,
+      "answer": "시장 한복판에서 춤을 춰볼까",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "그래서 오늘은 뭘 할까 뭘하면 특별한 하루가 될까",
+      "pages": [
+        79
+      ],
+      "regionIds": [
+        "78:7"
+      ]
+    },
+    {
+      "id": "p79-y427.58-44",
+      "sceneId": "scene-13",
+      "speaker": "선관 · 합창",
+      "kind": "가사",
+      "song": 17,
+      "answer": "뚜압 뚜압 뚜압 후 후\n뚜~~압 뚜~~압 뚜~~압 하 하~~\n성불 될거야 성불 될거야",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "오늘 나는 성불할 거야\n오랜 낮과 밤을 기다려 만난 사람\n막연한 믿음 또 믿음으로 이뤄낸 오늘\n그래 나는 성불 할거야",
+      "pages": [
+        79
+      ],
+      "regionIds": [
+        "78:16",
+        "78:18",
+        "78:21"
+      ]
+    },
+    {
+      "id": "p79-y502.26-44",
+      "sceneId": "scene-13",
+      "speaker": "다같이",
+      "kind": "가사",
+      "song": 17,
+      "answer": "오늘이 날이네 새로운 꿈을 꾸는 날\n당신의 꿈이 드디어 이뤄지는 날\n완벽한 오늘을 준비해 해 해 해\n오늘이 완벽한 날이네",
+      "directions": [],
+      "cueSpeaker": "옥희",
+      "cue": "오늘 나는 성불할 거야\n뚜압 뚜압 뚜압 후 후\n오랜 낮과 밤을 기다려 만난 사람\n뚜~~압 뚜~~압 뚜~~압 하 하~~\n막연한 믿음 또 믿음으로 이뤄낸 오늘\n성불 될거야 성불 될거야\n그래 나는 성불 할거야",
+      "pages": [
+        79
+      ],
+      "regionIds": [
+        "78:23",
+        "78:25",
+        "78:26",
+        "78:27"
+      ]
+    }
+  ]
+}

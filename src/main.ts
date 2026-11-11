@@ -1,4 +1,5 @@
 import "./style.css";
+import "./lines.css";
 import {
   createElement,
   Play,
@@ -29,6 +30,7 @@ import {
   Highlighter,
   RefreshCw,
   HelpCircle,
+  BookOpen,
   type IconNode,
 } from "lucide";
 import {
@@ -51,6 +53,7 @@ import { OfflineLibrary } from "./offline";
 import { Paper, openLocalPdf } from "./pdf";
 import { ScriptStore, type PersonalScript } from "./personal";
 import { appBase } from "./paths";
+import { LinePractice } from "./lines";
 const iconNodes: Record<string, IconNode> = {
   play: Play,
   pause: Pause,
@@ -80,6 +83,7 @@ const iconNodes: Record<string, IconNode> = {
   highlight: Highlighter,
   refresh: RefreshCw,
   help: HelpCircle,
+  book: BookOpen,
 };
 const esc = (s: unknown) =>
   String(s).replace(
@@ -200,6 +204,8 @@ let songIndex = 0,
   mrGain: GainNode | undefined,
   harmonyGain: GainNode | undefined;
 let score: Paper, script: Paper;
+let linePractice: LinePractice;
+let lineRoutePushed = false;
 const root = document.querySelector<HTMLElement>("#app")!;
 function notify(message: string) {
   const toast = document.querySelector<HTMLElement>("#toast");
@@ -872,6 +878,13 @@ function tools() {
     "연습 도구",
     () =>
       row(
+        "선관 대사 암기",
+        "가리기 · 힌트 · 어려운 대사 복습",
+        openLinePractice,
+        false,
+        "book",
+      ) +
+      row(
         "현재 지점 보정",
         "지금 보이는 두 페이지를 현재 시각에 저장",
         saveCue,
@@ -1137,6 +1150,31 @@ function setMode(mode: number) {
   save();
   update();
 }
+function openLinePractice() {
+  if (!linePractice || linePractice.isOpen) return;
+  pause();
+  closePanel();
+  root.classList.add("line-mode");
+  linePractice.open();
+  if (location.hash !== "#lines") {
+    lineRoutePushed = true;
+    history.pushState(null, "", "#lines");
+  }
+}
+function closeLinePractice() {
+  if (!linePractice) return;
+  linePractice.close();
+  root.classList.remove("line-mode");
+  update();
+  if (location.hash === "#lines") {
+    if (lineRoutePushed) history.back();
+    else history.replaceState(null, "", location.pathname + location.search);
+  }
+  lineRoutePushed = false;
+  root
+    .querySelector<HTMLButtonElement>('[data-action="lines"]')
+    ?.focus({ preventScroll: true });
+}
 async function toggleFullscreen() {
   saved.fullscreen = !saved.fullscreen;
   if (saved.fullscreen) saved.mode = 0;
@@ -1170,6 +1208,9 @@ function bind() {
       return;
     }
     switch (action) {
+      case "lines":
+        openLinePractice();
+        break;
       case "close":
         closePanel();
         break;
@@ -1293,6 +1334,7 @@ function bind() {
     if (e.target === e.currentTarget) closePanel();
   });
   document.addEventListener("keydown", (e) => {
+    if (linePractice.isOpen) return;
     const overlay = document.querySelector<HTMLElement>("#overlay")!;
     if (!overlay.hidden) {
       if (e.key === "Escape") {
@@ -1418,6 +1460,7 @@ function bind() {
   });
   audio.addEventListener("error", () => {
     ready = false;
+    if (linePractice.isOpen) return;
     notify(
       navigator.onLine
         ? "음원을 열 수 없어요 · 다운로드 상태를 확인하세요"
@@ -1427,6 +1470,12 @@ function bind() {
   for (const event of ["play", "pause", "ended"])
     audio.addEventListener(event, transport);
   window.addEventListener("pagehide", pause);
+  const syncLineRoute = () => {
+    if (location.hash === "#lines") openLinePractice();
+    else if (linePractice.isOpen) closeLinePractice();
+  };
+  window.addEventListener("hashchange", syncLineRoute);
+  window.addEventListener("popstate", syncLineRoute);
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) pause();
   });
@@ -1510,6 +1559,27 @@ function mount() {
   root.append(fileInput);
   root.querySelector<HTMLAnchorElement>(".brand")!.href = appBase.href;
   script = new Paper(document.querySelector("#script-paper")!);
+  const lineRoot = document.createElement("section");
+  lineRoot.id = "line-practice";
+  lineRoot.hidden = true;
+  lineRoot.setAttribute("aria-label", "선관 대사 연습");
+  root.append(lineRoot);
+  linePractice = new LinePractice(lineRoot, storageKey + "-lines-v1", {
+    exit: closeLinePractice,
+    marks: (page) => {
+      const bit = 1 << highlights.profiles.findIndex((p) => p.id === "선관");
+      return (highlights.documents["script.pdf"][page] || []).filter(
+        (mark) => mark.roles & bit,
+      );
+    },
+    notify,
+  });
+  const lineButton = document.createElement("button");
+  lineButton.dataset.action = "lines";
+  lineButton.setAttribute("aria-label", "선관 대사 암기");
+  lineButton.title = "선관 대사 암기";
+  lineButton.innerHTML = svg("book");
+  root.querySelector(".header-tools")!.prepend(lineButton);
   score.onPage = (direction) => manualPage("score", scorePage + direction);
   script.onPage = (direction) => manualPage("script", scriptPage + direction);
   score.onTap = tapScore;
@@ -1520,7 +1590,8 @@ function mount() {
   };
   bind();
   chooseSong(Math.max(0, Math.min(saved.song, catalog.songs.length - 1)));
-  if (!saved.seen) chooseRole();
+  if (location.hash === "#lines") openLinePractice();
+  else if (!saved.seen) chooseRole();
   else void recommendDownload();
 }
 async function init() {
