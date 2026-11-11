@@ -879,7 +879,7 @@ function tools() {
     () =>
       row(
         "선관 대사 암기",
-        "가리기 · 힌트 · 어려운 대사 복습",
+        "연속 대본 · 내 대사 가리기",
         openLinePractice,
         false,
         "book",

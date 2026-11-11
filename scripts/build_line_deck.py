@@ -21,7 +21,7 @@ audit = json.loads(audit_path.read_text())
 runtime = json.loads((ROOT / "app/src/main/assets/library/role-highlights.json").read_text())
 role = 1 << next(i for i, p in enumerate(runtime["profiles"]) if p["id"] == "선관")
 doc = pymupdf.open(source)
-scenes, turns = [], []
+scenes, turns, script = [], [], []
 scene, active, song, part = None, None, None, 0
 expected, recovered = set(), set()
 
@@ -43,6 +43,7 @@ for pi, page in enumerate(doc):
             g["endY"] = row["y"]
         else:
             groups.append(dict(id=f"p{pi+1}-y{row['y']:.2f}", raw=raw, y=row["y"], endY=row["y"], rows=[ri], page=pi+1))
+    label_rows = {ri for g in groups if g["raw"].count("(") == g["raw"].count(")") for ri in g["rows"]}
     groups = [g for g in groups if not g["raw"].startswith("(") and g["raw"].count("(") == g["raw"].count(")")]
     for gi, region in enumerate(regions):
         x0, y0, x1, y1 = [v*d for v,d in zip(region["box"], [page.rect.width, page.rect.height]*2)]
@@ -57,8 +58,9 @@ for pi, page in enumerate(doc):
         full = compact(text)
         at = full.find(wanted)
         assert at >= 0, (pi+1, wanted, full)
-        text = text[indexes[at]:indexes[at+len(wanted)-1]+1]
-        item = dict(text=text, roles=region["roles"], kind=region["kind"], page=pi+1, region=f"{pi}:{gi}", x=x0)
+        start, end = indexes[at], indexes[at+len(wanted)-1]+1
+        text = text[start:end]
+        item = dict(text=text, roles=region["roles"], kind=region["kind"], page=pi+1, region=f"{pi}:{gi}", x=x0, glyphs={id(c) for _,c in matches[start:end]})
         row_regions.setdefault(ri, []).append(item)
         if region["kind"] == "dialogue" and region["roles"] & role:
             expected.add(item["region"])
@@ -83,18 +85,57 @@ for pi, page in enumerate(doc):
         if marker:
             song = None if "끝" in text else int(marker.group(1))
             part += 1
+            if scene:
+                script.append(dict(id=f"script-p{pi+1}-r{ri}", sceneId=scene["id"], speaker="", kind="song", page=pi+1, parts=[dict(text=text, own=False)], regionIds=[], turnId=""))
             continue
         candidates = [g for g in groups if g["y"]-9 <= row["y"]]
         if candidates:
             active = candidates[-1]
-        if not active or not scene:
+        if not scene:
             continue
         segments = sorted([r for r in row_regions.get(ri, []) if r["kind"] == "dialogue"], key=lambda r:r["x"])
-        if not segments and active["raw"] == "동의회원":
+        if not segments and active and active["raw"] == "동의회원":
             body = "".join(c["c"] for c in row["body"]).strip()
             if body and not body.startswith("("):
                 segments = [dict(text=body, roles=0, page=pi+1, region=None)]
-        if not segments:
+        # Keep the complete script flow, including all other actors and stage
+        # directions. Only remove real margin speaker labels, never stage text.
+        chars = row["body"] if ri in label_rows else row["chars"]
+        visible = "".join(c["c"] for c in chars).strip()
+        if visible:
+            own_glyphs = set()
+            for segment in segments:
+                if not segment["roles"] & role or "glyphs" not in segment:
+                    continue
+                owned = segment["glyphs"]
+                # Inline acting directions stay visible. Parenthesized backing
+                # lyrics and purely nonverbal cues retain their audited owner.
+                if active and segment["roles"] == active["mask"] and re.sub(r"\([^()]*\)", "", segment["text"]).strip():
+                    depth = 0
+                    for char in chars:
+                        if id(char) not in owned:
+                            continue
+                        if char["c"] == "(":
+                            depth += 1
+                        if depth == 0:
+                            own_glyphs.add(id(char))
+                        if char["c"] == ")":
+                            depth = max(0, depth-1)
+                else:
+                    own_glyphs.update(owned)
+            parts = []
+            for char in chars:
+                own = id(char) in own_glyphs
+                if parts and parts[-1]["own"] == own:
+                    parts[-1]["text"] += char["c"]
+                else:
+                    parts.append(dict(text=char["c"], own=own))
+            if parts:
+                parts[0]["text"] = parts[0]["text"].lstrip()
+                parts[-1]["text"] = parts[-1]["text"].rstrip()
+            key = f"{active['id']}-{part}" if active and segments else ""
+            script.append(dict(id=f"script-p{pi+1}-r{ri}", sceneId=scene["id"], speaker=active["raw"] if active and segments else "", kind="speech" if segments else "direction", page=pi+1, parts=[p for p in parts if p["text"]], regionIds=[r["region"] for r in segments if r["roles"] & role], turnId=key))
+        if not segments or not active:
             continue
         key = f"{active['id']}-{part}"
         if not turns or turns[-1]["id"] != key:
@@ -149,7 +190,10 @@ assert len(scenes) == 13
 assert len({c["id"] for c in cards}) == len(cards)
 assert all(c["answer"] and c["pages"] for c in cards)
 assert {r for c in cards for r in c["regionIds"]} == expected
-deck = dict(version=1, role="선관", characters=runtime["profiles"][2]["characters"], sourceSha256=hashlib.sha256(source.read_bytes()).hexdigest(), ownershipSha256=hashlib.sha256(audit_path.read_bytes()).hexdigest(), ownedRegions=len(expected), scenes=scenes, cards=cards)
+assert {r for row in script for r in row["regionIds"]} == expected
+assert sum(len(row["regionIds"]) for row in script) == len(expected)
+assert all("".join(p["text"] for p in row["parts"]).strip() for row in script)
+deck = dict(version=2, role="선관", characters=runtime["profiles"][2]["characters"], sourceSha256=hashlib.sha256(source.read_bytes()).hexdigest(), ownershipSha256=hashlib.sha256(audit_path.read_bytes()).hexdigest(), ownedRegions=len(expected), scenes=scenes, cards=cards, script=script)
 target = Path(__file__).resolve().parents[1] / "src/data/seonkwan-lines.json"
 target.parent.mkdir(parents=True, exist_ok=True)
 target.write_text(json.dumps(deck, ensure_ascii=False, indent=2)+"\n")
